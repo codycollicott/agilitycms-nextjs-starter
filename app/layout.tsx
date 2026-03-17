@@ -6,7 +6,7 @@ import SiteHeader from "components/common/SiteHeader"
 import { getAgilityContext } from "lib/cms/getAgilityContext"
 
 import { Inter } from "next/font/google"
-
+import TopHeader from "components/common/TopHeader"
 import "../styles/globals.css"
 
 import { getHeaderContent } from "lib/cms-content/getHeaderContent"
@@ -42,21 +42,30 @@ export default async function RootLayout({
 
     redirect(url)
   }
-
+  
   return (
-    <html lang="en" className={`${inter.className} bg-white dark:bg-gray-900 transition-colors duration-300`}>
-      <body data-agility-guid={process.env.AGILITY_GUID} className="bg-white dark:bg-gray-900 transition-colors duration-300">
+    <html lang="en" className={`bg-white`}>
+      <body data-agility-guid={process.env.AGILITY_GUID} className="bg-white">
         <div id="site-wrapper">
-          <div id="site">
+          <div id="site" className="container mx-auto">
             <PreviewBar
               {...{ isDevelopmentMode, isPreview, startPreviewMode }}
             />
-
+            <TopHeader {...{ header }} />
             <div className="flex flex-col min-h-screen">
-              <SiteHeader {...{ header }} />
-
-              <main className={`grow`}>{children}</main>
-              <SiteFooter />
+              <div className="flex">
+                <SiteHeader {...{ header }} />
+                <main className='w-3/4'>
+                  <div className="bg-black px-12 py-16 mb-8">
+                    <h2 className="text-white"> Brand architecture </h2>
+                  </div>
+                  <div className="px-12">
+                    {children}
+                  </div>
+                  <SiteFooter {...{ header }} />
+                </main>
+              </div>
+              
             </div>
           </div>
         </div>

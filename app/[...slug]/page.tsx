@@ -19,6 +19,7 @@ export const dynamic = "force-static"
  * Generate the list of pages that we want to generate a build time.
  */
 export async function generateStaticParams() {
+  
 	const isDevelopmentMode = process.env.NODE_ENV === "development";
 	const isPreview = isDevelopmentMode;
 	const apiKey = isPreview ? process.env.AGILITY_API_PREVIEW_KEY : process.env.AGILITY_API_FETCH_KEY;
@@ -28,20 +29,18 @@ export async function generateStaticParams() {
 		isPreview,
 	});
 	const languageCode = process.env.AGILITY_LOCALES || "en-us";
-
+  
 	agilityClient.config.fetchConfig = {
 		next: {
 			tags: [`agility-sitemap-flat-${languageCode}`],
-			revalidate: 60,
+			revalidate: 10,
 		},
 	};
-
 	// Get the flat sitemap and generate the paths
 	const sitemap: { [path: string]: SitemapNode } = await agilityClient.getSitemapFlat({
 		channelName: process.env.AGILITY_SITEMAP || "website",
 		languageCode,
 	});
-
 	const paths = Object.values(sitemap)
 		.filter((node, index) => {
 			if (node.redirect !== null || node.isFolder === true || index === 0) return false;
@@ -53,7 +52,6 @@ export async function generateStaticParams() {
 			};
 		});
 
-	console.log("Pre-rendering", paths.length, "static paths.");
 	return paths;
 }
 
@@ -81,6 +79,7 @@ export async function generateMetadata(
 export default async function Page({ params }: PageProps) {
 
 	const agilityData = await getAgilityPage({ params });
+  console.log(agilityData?.page?.zones)
 	if (!agilityData.page) notFound();
 
 	const AgilityPageTemplate = getPageTemplate(agilityData.pageTemplateName || "");

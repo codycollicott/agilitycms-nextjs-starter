@@ -1,32 +1,94 @@
 const { fontFamily } = require('tailwindcss/defaultTheme')
 
 module.exports = {
-
+  mode: "jit",
 	content: [
-		"./app/**/*.{js,ts,jsx,tsx}",
-		"./components/**/*.{js,ts,jsx,tsx}"
+		"./app/**/*.{js,ts,jsx,tsx}",     // Next.js App Router
+    "./pages/**/*.{js,ts,jsx,tsx}",   // Next.js Pages
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./templates/**/*.{js,ts,jsx,tsx}", // your AgilityCMS templates
 	],
 
 	theme: {
+		
+
+		fontSize: {
+			'9xl': [
+				'5rem',
+				{
+					lineHeight: '100%',
+					letterSpacing: '-2.7%',
+					fontWeight: '400',
+				},
+			],
+			'8xl': [
+				'4.5rem',
+				{
+					lineHeight: '100%',
+					letterSpacing: '-2.7%',
+					fontWeight: '400',
+				},
+			],
+			'7xl': [
+				'3rem',
+				{
+					lineHeight: '100%',
+					letterSpacing: '-1%',
+					fontWeight: '400',
+				},
+			],
+			'6xl': [
+				'2rem',
+				{
+					lineHeight: '100%',
+					letterSpacing: '-1%',
+					fontWeight: '400',
+				},
+			],
+			'5xl': [
+				'1.5rem',
+				{
+					lineHeight: '100%',
+					letterSpacing: '0%',
+					fontWeight: '400',
+				},
+			],
+			'4xl': [
+				'1rem',
+				{
+					lineHeight: '100%',
+					letterSpacing: '0%',
+					fontWeight: '400',
+				},
+			],
+			'sm': [
+				'.875rem',
+				{
+					lineHeight: '135%',
+					letterSpacing: '0',
+					fontWeight: '400',
+				},
+			],
+			'xs': [
+				'.75rem',
+				{
+					lineHeight: '135%',
+					letterSpacing: '0',
+					fontWeight: '400',
+				},
+			],
+			
+		},
+		
 		fontFamily: {
-			sans: ['var(--font-inter)', ...fontFamily.sans],
+			sans: ['NHaasGroteskTXPro', ...fontFamily.sans],
 		},
 		extend: {
 
 			colors: {
 				transparent: "transparent",
 				agility: "#222",
-				primary: {
-					100: "#a273ff",
-					200: "#935bff",
-					300: "#8344ff",
-					400: "#742cff",
-					500: "#6415FF",
-					600: "#5a13e6",
-					700: "#5011cc",
-					800: "#460fb3",
-					900: "#3c0d99",
-				},
+				primary: "#24272A",
 				secondary: {
 					100: "#7c8ba1",
 					200: "#667892",

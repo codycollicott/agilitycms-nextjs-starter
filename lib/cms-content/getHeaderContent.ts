@@ -6,6 +6,7 @@ import { getSitemapNested } from "lib/cms/getSitemapNested"
 interface ILink {
 	title: string
 	path: string
+	children: []
 }
 
 export interface IHeaderData {
@@ -38,7 +39,7 @@ export const getHeaderContent = async ({ locale, sitemap }: Props) => {
 
 	// set up content item
 	let contentItem: ContentItem<IHeader> | null = null
-
+  
 	// set up links
 	let links = []
 
@@ -71,17 +72,16 @@ export const getHeaderContent = async ({ locale, sitemap }: Props) => {
 			languageCode: locale,
 			locale
 		})
-
 		// grab the top level links that are visible on menu
 		links = nodes
 			.filter((node: any) => node.visible.menu)
 			.map((node: any) => {
 
 				const path = node.path
-
 				return {
 					title: node.menuText || node.title,
 					path: path === "/home" ? "/" : path,
+					children: node?.children
 				}
 			})
 
@@ -93,6 +93,7 @@ export const getHeaderContent = async ({ locale, sitemap }: Props) => {
 	return {
 		siteName: contentItem.fields.siteName,
 		logo: contentItem.fields.logo,
+    test: contentItem.fields.NavigationItems,
 		links,
 	} as IHeaderData
 }

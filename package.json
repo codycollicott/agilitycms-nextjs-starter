@@ -7,17 +7,22 @@
 		"build": "next build",
 		"build-swa": "next build && rm -rf ./.next/cache",
 		"start": "next start",
-		"lint": "next lint"
+		"lint": "next lint",
+    "watch": "tailwindcss -i ./styles/input.css -o ./styles/output.css --watch"
 	},
 	"engines": {
 		"node": ">=18.x"
 	},
 	"dependencies": {
+		"react-highlight-words": "^0.21.0",
+		"@algolia/autocomplete-core": "^1.18.0",
 		"@headlessui/react": "^2.2.4",
+		"@heroicons/react": "^2.2.0",
 		"@tabler/icons-react": "^3.34.0",
 		"@types/node": "18.11.9",
 		"@types/react": "19.2.7",
 		"@types/react-dom": "19.2.3",
+		"flexsearch": "^0.7.43",
 		"classnames": "^2.3.2",
 		"eslint": "8.27.0",
 		"eslint-config-next": "13.0.3",
@@ -33,12 +38,12 @@
 	},
 	"devDependencies": {
 		"@agility/content-fetch": "^2.0.0",
-		"shx": "^0.3.4",
 		"@agility/nextjs": "^16.0.7",
 		"@tailwindcss/postcss": "^4.1.10",
 		"@tailwindcss/typography": "^0.5.8",
 		"@types/luxon": "^3.1.0",
 		"postcss": "^8.4.19",
+		"shx": "^0.3.4",
 		"tailwindcss": "^4.1.10"
 	}
 }

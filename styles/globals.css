@@ -5,7 +5,51 @@
 /* Import tailwind base styles */
 @import 'tailwindcss';
 
+@font-face {
+  font-family: 'NHaasGroteskTXPro';
+  src: url('/fonts/NHaasGroteskTXPro-55Rg.otf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
+.p-sm p {
+  font-size: .875rem;
+	line-height: 100%;
+	letter-spacing: 0%;
+	font-weight:400;			
+}
+
+/*
+@font-face {
+  font-family: '55Roman';
+  src: url('/fonts/NHaasGroteskTXPro-55Rg.otf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: '56Roman';
+  src: url('/fonts/NHaasGroteskTXPro-56It.otf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: '65Roman';
+  src: url('/fonts/NHaasGroteskTXPro-65Md.otf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: '66Roman';
+  src: url('/fonts/NHaasGroteskTXPro-66Md.otf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+  */
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* Import tailwind component styles */
@@ -33,6 +77,28 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+  h1 {
+    @apply text-9xl;
+  }
+
+  h2 {
+    @apply text-8xl;
+  }
+
+  h3 {
+    @apply text-7xl;
+  }
+
+  h4 {
+    @apply text-6xl;
+  }
+  h5 {
+    @apply text-5xl;
+  }
+
+  h6 {
+    @apply text-4xl;
+  }
   *,
   ::after,
   ::before,
