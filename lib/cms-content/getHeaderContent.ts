@@ -93,7 +93,6 @@ export const getHeaderContent = async ({ locale, sitemap }: Props) => {
 	return {
 		siteName: contentItem.fields.siteName,
 		logo: contentItem.fields.logo,
-    test: contentItem.fields.NavigationItems,
 		links,
 	} as IHeaderData
 }

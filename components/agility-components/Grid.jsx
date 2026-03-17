@@ -2,6 +2,7 @@ import { UnloadedModuleProps, renderHTML } from "@agility/nextjs"
 import { getContentItem } from "lib/cms/getContentItem"
 import TextNode from "../common/TextNode"
 import ColorSwatch from "../common/ColorSwatch"
+import QANode from '../common/QANode'
 import MasonryGrid from "../common/MasonryGrid"
 import { StyledText } from "../../components/common/text/helper"
 
@@ -10,11 +11,11 @@ const Grid = async ({ module, languageCode }) => {
     contentID: module.contentid,
     languageCode,
   })
-  console.log(fields)
+  
   return (
 		<div className="relative mt-20" data-agility-component={contentID}>
 			<div className="grid-cols-4 grid-cols-5 grid-cols-3 grid-cols-2 text-sm hidden"></div>
-      {fields?.HideTitle !== true && (
+      {fields?.hideTitle !== 'true' && (
         <StyledText 
           color={fields?.titleColor} 
           style={fields?.titleStyle}
@@ -22,10 +23,15 @@ const Grid = async ({ module, languageCode }) => {
           spacingBottom={fields?.titleSpacingBottom}
         />
       )}
-      <div
-        className={`text-gray-600 mb-${fields?.subTitleSpacingBottom}`}
-        dangerouslySetInnerHTML={renderHTML(fields?.subTitle)}
-      ></div>
+      {fields?.titleBorderBottom == 'true' && (
+        <div className={`mb-${fields?.titleSpacingBottom} h-[2px] bg-black w-full`}> </div>
+      )}
+      {fields?.subTitle && (
+        <div
+          className={`text-gray-600 mb-${fields?.subTitleSpacingBottom}`}
+          dangerouslySetInnerHTML={renderHTML(fields?.subTitle)}
+        ></div>
+      )}
       {fields?.masonlayout == 'true' ? (
         <MasonryGrid items={fields?.nodes} />
       ) : (
@@ -34,6 +40,7 @@ const Grid = async ({ module, languageCode }) => {
             console.log(node)
             if (node?.fields?.nodeType == "textImage") return <TextNode index={index} grid={fields} node={node} /> 
             if (node?.fields?.nodeType == "color") return <ColorSwatch node={node} /> 
+            if (node?.fields?.nodeType == "qa") return <QANode node={node} /> 
             return <div> </div>
           })}
         </div>

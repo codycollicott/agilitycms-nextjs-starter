@@ -2,6 +2,7 @@
 import { renderHTML } from "@agility/nextjs"
 import { StyledText, RichStyledText } from "./text/helper"
 const TextNode = ({ node, grid, index }) => {
+
 	if (!node) {
 		return (
 			<header className="relative p-8 text-center">
@@ -9,6 +10,7 @@ const TextNode = ({ node, grid, index }) => {
 			</header>
 		)
 	}
+
 	return (
 		<div className={`${grid?.hasBorder == "true" && 'border-l-1 border-black pl-2'}`}>
 			{node?.fields?.backupImage?.url && (

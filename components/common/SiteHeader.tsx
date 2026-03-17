@@ -12,7 +12,7 @@ interface Props {
 const SiteHeader = ({ header }: Props) => {
 	const pathname = usePathname()
 	const [open, setOpen] = useState(false)
-	const [subMenu, setSubMenu] = useState(null)
+	const [subMenu, setSubMenu]:any = useState(null)
   
   
   if (!header) {
@@ -51,20 +51,20 @@ const SiteHeader = ({ header }: Props) => {
 								return (
 									<div className="">
 										<div className="">
-                      <div className={`${isParentActive && 'bg-gray-600'} p-2 flex justify-between items-center`}>
+                      <div className={`${isParentActive && 'bg-[#333]'} p-2 flex justify-between items-center`}>
                         <p className={`text-base leading-6 font-medium text-white`}> {navitem.title} </p>
                         {subMenu == index ? <CgArrowUp className="text-white" onClick={() => setSubMenu(null)} /> : <CgArrowDown className="text-white" onClick={() => setSubMenu(index)} />}
 											 </div>
 										</div>
 										{subMenu == index && (
 											<div className="ml-4 mt-2 flex flex-col"> 
-												{navitem?.children?.map(item => {
+												{navitem?.children?.map((item:any) => {
                           const isChildActive = pathname.includes(item.path)
                           return (
                             <Link
                               href={item.path}
                               key={`mobile-${index}`}
-                              className={`${(isChildActive && isParentActive) && 'bg-gray-600'} p-2 text-base text-white`}
+                              className={`${(isChildActive && isParentActive) ? 'bg-[#333] text-[#FFF]' : 'text-[#CCC]'} p-2 text-base`}
                             >
                               {item.title || item?.menuText}
                             </Link>
