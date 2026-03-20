@@ -10,6 +10,7 @@ interface Props {
 }
 
 const TopHeader = ({ header }: Props) => {
+  console.log(header)
 	if (!header) {
 		return (
 			<header className="relative p-8 text-center">

@@ -22,7 +22,7 @@ const SiteHeader = ({ header }: Props) => {
 			</header>
 		)
 	}
-  console.log(header)
+  
 	return (
 		<header className="w-1/4 bg-primary relative mx-auto p-8">
 			<div className="max-w-(--breakpoint-xl) mx-auto">
@@ -46,7 +46,7 @@ const SiteHeader = ({ header }: Props) => {
 					<nav className="flex-col">
 						{header.links.map((navitem, index) => {
               const isParentActive = pathname.includes(navitem.path)
-              
+              console.log(navitem)
 							if (navitem?.children) {
 								return (
 									<div className="">
@@ -62,7 +62,7 @@ const SiteHeader = ({ header }: Props) => {
                           const isChildActive = pathname.includes(item.path)
                           return (
                             <Link
-                              href={item.path}
+                              href={item?.redirect?.url ? `${navitem?.children?.[0]?.path}${item?.redirect?.url}` : item.path}
                               key={`mobile-${index}`}
                               className={`${(isChildActive && isParentActive) ? 'bg-[#333] text-[#FFF]' : 'text-[#CCC]'} p-2 text-base`}
                             >

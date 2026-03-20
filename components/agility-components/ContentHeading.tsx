@@ -13,12 +13,9 @@ const ContentHeading = async ({ module, languageCode }: UnloadedModuleProps) => 
   })
 	
   return (
-		<div className="relative py-12" data-agility-component={contentID}>
-			<h4 data-agility-field={"title"} className="mb-8"> {fields.title} </h4>
-			<div className="w-3/4">
-				<p className="text-gray-600"> {fields?.subline} </p>
-			</div>
-		</div>
+    <div className="bg-black px-12 py-16 mb-8">
+      <h2 className="text-white"> {fields.title} </h2>
+    </div>
   )
 }
 

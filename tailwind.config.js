@@ -46,9 +46,9 @@ module.exports = {
 				},
 			],
 			'5xl': [
-				'1.5rem',
+				'1.2rem',
 				{
-					lineHeight: '100%',
+					lineHeight: '133%',
 					letterSpacing: '0%',
 					fontWeight: '400',
 				},

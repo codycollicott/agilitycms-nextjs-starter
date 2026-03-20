@@ -8,8 +8,8 @@ const ImageNode = async ({ module, languageCode }) => {
   })
   console.log(fields)
   return (
-		<div className="relative mt-20" data-agility-component={contentID}>
-      {(fields?.title && fields?.hideTitle !== 'true') && (
+		<div className="pl-20 pr-4 relative mt-20" data-agility-component={contentID}>
+      {(fields?.hideTitle !== 'true') && (
         <StyledText 
           color={fields?.titleColor} 
           content={fields?.title} 

@@ -2,7 +2,6 @@ import { draftMode } from "next/headers"
 import PreviewBar from "components/common/PreviewBar"
 import SiteFooter from "components/common/SiteFooter"
 import SiteHeader from "components/common/SiteHeader"
-
 import { getAgilityContext } from "lib/cms/getAgilityContext"
 
 import { Inter } from "next/font/google"
@@ -10,6 +9,7 @@ import TopHeader from "components/common/TopHeader"
 import "../styles/globals.css"
 
 import { getHeaderContent } from "lib/cms-content/getHeaderContent"
+import { getFooterContent } from "lib/cms-content/getFooterContent"
 import { redirect } from "next/navigation"
 import Script from "next/script"
 
@@ -25,6 +25,7 @@ export default async function RootLayout({
 }) {
   const { locale, sitemap, isDevelopmentMode, isPreview } = await getAgilityContext()
   const header = await getHeaderContent({ sitemap, locale })
+  const footer = await getFooterContent({locale})
 
   async function startPreviewMode(pathname: string) {
     "use server";
@@ -56,13 +57,10 @@ export default async function RootLayout({
               <div className="flex">
                 <SiteHeader {...{ header }} />
                 <main className='w-3/4'>
-                  <div className="bg-black px-12 py-16 mb-8">
-                    <h2 className="text-white"> Brand architecture </h2>
-                  </div>
-                  <div className="px-12">
+                  <div className="">
                     {children}
                   </div>
-                  <SiteFooter {...{ header }} />
+                  <SiteFooter {...{ footer }} {...{header}} />
                 </main>
               </div>
               

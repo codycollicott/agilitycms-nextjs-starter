@@ -13,7 +13,7 @@ const Grid = async ({ module, languageCode }) => {
   })
   
   return (
-		<div className="relative mt-20" data-agility-component={contentID}>
+		<div id={fields?.navigationID || ''} className="pl-20 pr-4 relative mt-20" data-agility-component={contentID}>
 			<div className="grid-cols-4 grid-cols-5 grid-cols-3 grid-cols-2 text-sm hidden"></div>
       {fields?.hideTitle !== 'true' && (
         <StyledText 

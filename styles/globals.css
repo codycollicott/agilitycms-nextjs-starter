@@ -12,9 +12,22 @@
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: 'NHaasGroteskTXProB';
+  src: url('/fonts/NHaasGroteskTXPro-65Md.otf');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 .p-sm p {
   font-size: .875rem;		
+}
+.download-node-content strong {
+  font-family: 'NHaasGroteskTXProB';
+}
+.download-node-content p {
+  margin-bottom: 20px;
 }
 
 /*

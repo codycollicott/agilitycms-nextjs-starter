@@ -1,56 +1,71 @@
 import Image from "next/image"
+import Link from "next/link"
 import React from "react"
 import { CgSoftwareDownload } from "react-icons/cg"
 /**
  * This footer is not part of the content in the CMS, feel free to remove this for production use.
  */
 
-const SiteFooter = ({ header }) => {
-
+const SiteFooter = ({ footer, header }) => {
+  console.log('asdkjl;asd')
+  console.log(footer)
 	return (
 		<footer className="px-8 py-8 mt-28">
       <div className="bg-black h-[1px] w-full my-4"></div>
 			<img src={header?.logo?.url} />
       <div className="mt-12 grid grid-cols-3 gap-12">
         <div>
-          <p className="mb-2">Brand architecture</p>
-          <p className="mb-2">Strategy and writing</p>
-          <p className="mb-2">Logo</p>
-          <p className="mb-2">Layout system</p>
-          <p className="mb-2">Colour palette</p>
-          <p className="">Typography</p>
+          {footer?.links?.[0]?.map(link => (
+            <Link href={link?.fields?.linkUrl || ''}>
+              <p className="mb-2">{link?.fields?.linkName}</p>
+            </Link>
+          ))}
         </div>
         <div>
-          <p className="mb-2">Photography</p>
-          <p className="mb-2">Video and motion standards</p>
-          <p className="mb-2">Icons</p>
-          <p className="mb-2">QA Checklist</p>
-          <p className="mb-2">Applications and templates</p>
+          {footer?.links?.[1]?.map(link => (
+            <Link href={link?.fields?.linkUrl || ''}>
+              <p className="mb-2">{link?.fields?.linkName}</p>
+            </Link>
+          ))}
         </div>
         <div>
           <div className="flex mb-2 items-center">
-            <p className="mr-2">Download Oxford logo</p>
+            <p className="mr-2">{footer?.data?.downloadButtonLabel1}</p>
             <CgSoftwareDownload />
           </div>
           <div className="flex mb-2 items-center">
-            <p className="mr-2">Download font package</p>
+            <p className="mr-2">{footer?.data?.downloadButtonLabel2}</p>
             <CgSoftwareDownload />
           </div>
         </div>
       </div>
       <div className="flex justify-end mt-12">
-        <div className="border rounded-sm px-6 mr-2 py-2"> Oxford Digital Library </div>
-        <div className="border rounded-sm px-6 mr-2 py-2"> Brand Marketing </div>
-        <div className="border rounded-sm px-6 py-2"> AI Assistant </div>
+        <Link href={footer?.data?.link1?.href}>
+          <div className="border flex rounded-sm px-6 py-2 items-center mr-2">  {footer?.data?.link1?.text} </div>
+        </Link>
+        <Link href={footer?.data?.link2?.href}>
+          <div className="border flex rounded-sm px-6 py-2 items-center mr-2"> <img className="w-4 mr-2" src='/env.png' /> {footer?.data?.link2?.text} </div>
+        </Link>
+        <Link href={footer?.data?.link3?.href}>
+          <div className="border flex rounded-sm px-6 py-2 items-center"> <img className="w-4 mr-2" src='/ai_icon.png' /> {footer?.data?.link3?.text} </div>
+        </Link>
       </div>
       <div className="bg-black h-[1px] w-full my-4"></div>
       <div className="flex gap-4 justify-between mt-4">
-        <p className="text-sm text-gray-600"> Privacy </p>
-        <p className="text-sm text-gray-600"> Privacy </p>
-        <p className="text-sm text-gray-600"> Privacy </p>
-        <p className="text-sm text-gray-600"> Privacy </p>
+        {footer?.links?.[2]?.map(link => (
+          <Link href={link?.fields?.linkUrl || ''}>
+            <p className="mb-2">{link?.fields?.linkName}</p>
+          </Link>
+        ))}
       </div>
-      <p className="text-gray-600 mt-4 text-sm"> © Oxford Properties Group 2025. All rights reserved. All figures as of June 30, 2025 unless otherwise stated. </p>
+      <div className="flex justify-between items-center">
+        <p className="text-gray-600 mt-4 text-sm"> {footer?.data?.copyrightText} </p>
+        <div className="flex items-center">
+          <Link href={footer?.data?.linkedinUrl || ''}> <img className="w-4 mr-4" src='/link.png' /></Link>
+          <Link href={footer?.data?.youtubeUrl || ''}> <img className="w-4 mr-4" src='/youtube.png' /></Link>
+          <Link href={footer?.data?.instagramUrl || ''}> <img className="w-4" src='/insta.png' /></Link>
+        </div>
+      </div>
 		</footer>
 	)
 }

@@ -11,7 +11,7 @@ const DownloadNode = async ({ module, languageCode }) => {
   })
   console.log(fields)
   return (
-		<div style={{ width: `${fields?.nodeWidth}%` }} className="relative mt-20" data-agility-component={contentID}>
+		<div id={fields?.navigationID || ''} style={{ width: `${fields?.nodeWidth}%` }} className="pl-20 pr-4 relative mt-20" data-agility-component={contentID}>
       <div className="mb-4 mb-8 mb-12 hidden"></div>
 			<StyledText 
 				color={fields?.titleColor} 
@@ -25,7 +25,7 @@ const DownloadNode = async ({ module, languageCode }) => {
       <div
         data-agility-field="textblob"
         data-agility-html
-        className="text-gray-600"
+        className="text-gray-600 download-node-content"
         dangerouslySetInnerHTML={renderHTML(fields?.content)}
       ></div>
       {!!(fields?.downloadLabel || fields?.navigationLabel) && (

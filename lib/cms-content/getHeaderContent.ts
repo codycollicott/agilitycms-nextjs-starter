@@ -46,7 +46,7 @@ export const getHeaderContent = async ({ locale, sitemap }: Props) => {
 	try {
 		// try to fetch our site header
 		let header = await getContentList({
-			referenceName: "siteheader",
+			referenceName: "brandHeader",
 			languageCode: locale,
 			take: 1,
 			locale
@@ -72,6 +72,7 @@ export const getHeaderContent = async ({ locale, sitemap }: Props) => {
 			languageCode: locale,
 			locale
 		})
+    console.log(nodes)
 		// grab the top level links that are visible on menu
 		links = nodes
 			.filter((node: any) => node.visible.menu)

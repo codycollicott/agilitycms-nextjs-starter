@@ -8,7 +8,7 @@ import ImageNode from "./ImageNode"
 // Place Page Modules in allModules array below, passing in a name and the component.
 
 const allModules = [
-	{ name: "ContentHeading", module: ContentHeading},
+	{ name: "BrandContentHeading", module: ContentHeading},
 	{ name: "BrandGridComponent", module: Grid},
 	{ name: "RichTextArea", module: RichTextArea },
 	{ name: "BrandDownloadComponent", module: DownloadNode },
