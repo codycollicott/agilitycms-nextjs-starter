@@ -1,5 +1,5 @@
 "use client"
-import { useState} from "react"
+import { useState, useEffect} from "react"
 import Link from "next/link"
 import { IHeaderData } from "lib/cms-content/getHeaderContent"
 import { CgArrowDown, CgArrowUp } from "react-icons/cg"
@@ -13,7 +13,22 @@ const SiteHeader = ({ header }: Props) => {
 	const pathname = usePathname()
 	const [open, setOpen] = useState(false)
 	const [subMenu, setSubMenu]:any = useState(null)
-  
+
+  const [hash, setHash] = useState("");
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      setHash(window.location.hash.replace("#", ""));
+    };
+
+    handleHashChange(); // initial
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, []);
+
   
   if (!header) {
 		return (
@@ -58,7 +73,9 @@ const SiteHeader = ({ header }: Props) => {
 										{subMenu == index && (
 											<div className="ml-4 mt-2 flex flex-col"> 
 												{navitem?.children?.map((item:any) => {
-                          const isChildActive = pathname.includes(item.path)
+                          console.log((`${navitem?.children?.[0]?.path}${item?.redirect?.url}`))
+                          console.log(pathname)
+                          const isChildActive = (`${pathname}${hash ? '#'+hash : ''}`).includes(`${navitem?.children?.[0]?.path}${item?.redirect?.url}`)
                           return (
                             <Link
                               href={item?.redirect?.url ? `${navitem?.children?.[0]?.path}${item?.redirect?.url}` : item.path}

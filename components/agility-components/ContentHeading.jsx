@@ -1,17 +1,15 @@
 import { UnloadedModuleProps } from "@agility/nextjs"
 import { getContentItem } from "lib/cms/getContentItem"
 
-interface IHeading {
-  title: string,
-  subline: string
-}
-
-const ContentHeading = async ({ module, languageCode }: UnloadedModuleProps) => {
-  const { fields, contentID } = await getContentItem<IHeading>({
+const ContentHeading = async ({ module, languageCode }) => {
+  const { fields, contentID } = await getContentItem({
     contentID: module.contentid,
     languageCode,
   })
-	
+  console.log(fields)
+	if (fields?.image) return (
+    <div className=""> <img className="w-full" src={fields?.image?.url} /> </div>
+  )
   return (
     <div className="bg-black px-12 py-16 mb-8">
       <h2 className="text-white"> {fields.title} </h2>

@@ -2,8 +2,26 @@
 import { renderHTML } from "@agility/nextjs"
 import { StyledText } from "./text/helper"
 
-const QANode = ({ node, grid, index }) => {
+const QANode = ({ node }) => {
 
+  const parseStatusString = (input) => {
+    console.log(input)
+    let icon = "check"; // default
+    let cleaned = input;
+
+    if (input.includes("[i]")) {
+      icon = "warning";
+      cleaned = input.replace("[i]", "");
+    } else if (input.includes("[x]")) {
+      icon = "error";
+      cleaned = input.replace("[x]", "");
+    }
+
+    return {
+      icon,
+      text: cleaned.trim()
+    };
+  }
   if (!node) {
     return (
       <header className="relative p-8 text-center">
@@ -31,14 +49,18 @@ const QANode = ({ node, grid, index }) => {
       {node?.fields?.titleBorderBottom == 'true' && (
         <div className={`mb-${node?.fields?.titleSpacingBottom} h-[2px] bg-black w-full`}> </div>
       )}
-      {items?.map(item => (
+      {items?.map(item => {
+        
+        const inputWIcon = parseStatusString(item)
+
+        return (
         <div className="flex mb-4 items-start "> 
-          <img className="w-[20px] mr-4" src='/check.svg' />
+          <img className="w-[20px] mr-4" src={`/${inputWIcon?.icon}.svg`} />
           <p className="w-5/6 text-gray-600"> 
-            <div className={`text-gray-600`} dangerouslySetInnerHTML={renderHTML(item)} ></div>
+            <div className={`text-gray-600`} dangerouslySetInnerHTML={renderHTML(inputWIcon?.text)} ></div>
           </p>
         </div>
-      ))}
+      )})}
     </div>
   )
 }
