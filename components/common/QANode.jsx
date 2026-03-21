@@ -1,6 +1,7 @@
 "use client"
 import { renderHTML } from "@agility/nextjs"
-import { StyledText, RichStyledText } from "./text/helper"
+import { StyledText } from "./text/helper"
+
 const QANode = ({ node, grid, index }) => {
 
   if (!node) {
@@ -32,14 +33,13 @@ const QANode = ({ node, grid, index }) => {
         <div className={`mb-${node?.fields?.titleSpacingBottom} h-[2px] bg-black w-full`}> </div>
       )}
       {items?.map(item => (
-        <div className="flex mb-4 items-center"> 
-          <div className="w-1/6"> <img className="w-[16px]" src='/check.png' /> </div>
+        <div className="flex mb-4 items-start "> 
+          <img className="w-[20px] mr-4" src='/check.svg' />
           <p className="w-5/6 text-gray-600"> 
             <div className={`text-gray-600`} dangerouslySetInnerHTML={renderHTML(item)} ></div>
           </p>
         </div>
       ))}
-      
     </div>
   )
 }

@@ -44,26 +44,26 @@ const SiteFooter = ({ footer, header }) => {
           <div className="border flex rounded-sm px-6 py-2 items-center mr-2">  {footer?.data?.link1?.text} </div>
         </Link>
         <Link href={footer?.data?.link2?.href}>
-          <div className="border flex rounded-sm px-6 py-2 items-center mr-2"> <img className="w-4 mr-2" src='/env.png' /> {footer?.data?.link2?.text} </div>
+          <div className="border flex rounded-sm px-6 py-2 items-center mr-2"> <img className="w-4 mr-2" src='/env.svg' /> {footer?.data?.link2?.text} </div>
         </Link>
         <Link href={footer?.data?.link3?.href}>
-          <div className="border flex rounded-sm px-6 py-2 items-center"> <img className="w-4 mr-2" src='/ai_icon.png' /> {footer?.data?.link3?.text} </div>
+          <div className="border flex rounded-sm px-6 py-2 items-center"> <img className="w-4 mr-2" src='/ai_icon.svg' /> {footer?.data?.link3?.text} </div>
         </Link>
       </div>
       <div className="bg-black h-[1px] w-full my-4"></div>
       <div className="flex gap-4 justify-between mt-4">
         {footer?.links?.[2]?.map(link => (
           <Link href={link?.fields?.linkUrl || ''}>
-            <p className="mb-2">{link?.fields?.linkName}</p>
+            <p className="text-gray-600 text-sm mb-2">{link?.fields?.linkName}</p>
           </Link>
         ))}
       </div>
       <div className="flex justify-between items-center">
         <p className="text-gray-600 mt-4 text-sm"> {footer?.data?.copyrightText} </p>
         <div className="flex items-center">
-          <Link href={footer?.data?.linkedinUrl || ''}> <img className="w-4 mr-4" src='/link.png' /></Link>
-          <Link href={footer?.data?.youtubeUrl || ''}> <img className="w-4 mr-4" src='/youtube.png' /></Link>
-          <Link href={footer?.data?.instagramUrl || ''}> <img className="w-4" src='/insta.png' /></Link>
+          <Link href={footer?.data?.linkedinUrl || ''}> <img className="w-4 mr-4" src='/link.svg' /></Link>
+          <Link href={footer?.data?.youtubeUrl || ''}> <img className="w-4 mr-4" src='/youtube.svg' /></Link>
+          <Link href={footer?.data?.instagramUrl || ''}> <img className="w-4" src='/insta.svg' /></Link>
         </div>
       </div>
 		</footer>

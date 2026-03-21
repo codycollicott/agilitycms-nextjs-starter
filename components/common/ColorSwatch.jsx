@@ -1,5 +1,5 @@
 "use client"
-
+import { StyledText } from "../../components/common/text/helper"
 const ColorSwatch = ({ node, height='auto' }) => {
 	if (!node) {
 		return (
@@ -14,23 +14,25 @@ const ColorSwatch = ({ node, height='auto' }) => {
     }
     return { backgroundColor: `#${node?.fields?.hexcode}` }
   }
-  if (node?.fields?.title == 'White Text') {
-    console.log(node?.fields)
-  }
+  
   const getTextColor = (colorByNode) => {
     if (colorByNode == 'black') return 'text-black'
     if (colorByNode == 'white') return 'text-white'
     return 'text-gray-600'
   }
+
 	return (
 		<div 
       className={` ${node?.fields?.colorHasStroke ? 'border border-1 border-[#666]' : ''} ${height == 'auto' ? 'min-h-[235px]' : height} p-4 flex flex-col justify-between`} 
       style={colorNodeStyle(node?.fields?.displayAsBorder)}
     >
       <div>
-        <p className={`${node?.fields?.colorSubTitle ? 'mb-0' : 'mb-4'} ${getTextColor(node?.fields?.titleColor)} text-xl`}> 
-          {node?.fields?.title}
-        </p>
+        <StyledText 
+          color={node?.fields?.titleColor} 
+          spacingBottom={node?.fields?.titleSpacingBottom} 
+          style={node?.fields?.titleStyle} 
+          content={node?.fields?.title} 
+        />
         {node?.fields?.colorSubTitle && (
           <p className={`${getTextColor(node?.fields?.colorSwatchSubTitleColor)} text-xl mb-4`}> {node?.fields?.colorSubTitle}</p>
         )}

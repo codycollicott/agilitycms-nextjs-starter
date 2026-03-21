@@ -17,6 +17,9 @@ const ImageNode = async ({ module, languageCode }) => {
           spacingBottom={fields?.titleSpacingBottom}
         />
       )}
+      {fields?.titleBorderBottom == 'true' && (
+        <div className={`mb-${fields?.titleSpacingBottom} h-[2px] bg-black w-full`}> </div>
+      )}
       <RichStyledText 
         color={fields?.contentColor} 
         content={fields?.content} 

@@ -1,8 +1,21 @@
 import { UnloadedModuleProps, renderHTML } from "@agility/nextjs"
 
 export const StyledText = ({style, color, content, spacingBottom}) => {
-	const textColor = color == 'grey' ? 'gray-500' : 'black'
-	
+	//const textColor = color == 'grey' ? 'gray-500' : 'black'
+	let textColor;
+
+  switch (color) {
+    case 'grey':
+      textColor = "gray-600";
+      break;
+    case 'white':
+      textColor = "white";
+      break;
+    default:
+      textColor = "black";
+  }
+
+
 	switch(style) {
 		case 'h1':
 			return (<h1 className={`text-${textColor} mb-${spacingBottom}`}> {content} </h1>)
