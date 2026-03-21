@@ -12,7 +12,6 @@ const QANode = ({ node, grid, index }) => {
     )
   }
   
-  console.log(node?.fields)
   const items = node?.fields?.qAItems
     .split(/<\/p>/)
     .map(item => item.replace(/<p>/, "").trim())

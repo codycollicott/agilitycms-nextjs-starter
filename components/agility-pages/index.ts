@@ -6,7 +6,6 @@ import MainTemplate from "./MainTemplate";
 const allTemplates = [{ name: "OneColumnTemplate", template: MainTemplate }];
 
 export const getPageTemplate = (templateName:string) => {
-  console.log('template',templateName)
 	if (!templateName) return null;
 	const obj = allTemplates.find(
 		(m) => m.name.toLowerCase() === templateName.toLowerCase()

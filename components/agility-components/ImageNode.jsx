@@ -6,7 +6,6 @@ const ImageNode = async ({ module, languageCode }) => {
     contentID: module.contentid,
     languageCode,
   })
-  console.log(fields)
   return (
 		<div className="pl-20 pr-4 relative mt-20" data-agility-component={contentID}>
       {(fields?.hideTitle !== 'true') && (

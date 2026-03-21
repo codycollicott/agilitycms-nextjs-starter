@@ -46,7 +46,6 @@ const SiteHeader = ({ header }: Props) => {
 					<nav className="flex-col">
 						{header.links.map((navitem:any, index) => {
               const isParentActive = pathname.includes(navitem.path)
-              console.log(navitem)
 							if (navitem?.children) {
 								return (
 									<div className="">

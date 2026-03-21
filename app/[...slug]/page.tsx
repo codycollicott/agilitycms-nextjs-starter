@@ -79,7 +79,6 @@ export async function generateMetadata(
 export default async function Page({ params }: PageProps) {
 
 	const agilityData = await getAgilityPage({ params });
-  console.log(agilityData?.page?.zones)
 	if (!agilityData.page) notFound();
 
 	const AgilityPageTemplate = getPageTemplate(agilityData.pageTemplateName || "");

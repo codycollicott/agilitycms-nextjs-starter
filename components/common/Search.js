@@ -137,13 +137,13 @@ function LoadingIcon(props) {
 
 const getSnippetWithHighlight = (text, searchTerm, snippetLength = 60) => {
   if (!searchTerm) return "";
-
+  if (!text) return "";
   const index = text?.toLowerCase()?.indexOf(searchTerm?.toLowerCase());
   if (index === -1) return ""; // If no match found, return empty string
 
   // Define snippet boundaries
   let start = Math.max(index - snippetLength / 2, 0);
-  let end = Math.min(index + searchTerm.length + snippetLength / 2, text.length);
+  let end = Math.min(index + searchTerm?.length + snippetLength / 2, text?.length);
 
   // Ensure we don't cut off words abruptly
   while (start > 0 && text[start] !== " ") start--; // Move back to the nearest space

@@ -72,7 +72,6 @@ export const getHeaderContent = async ({ locale, sitemap }: Props) => {
 			languageCode: locale,
 			locale
 		})
-    console.log(nodes)
 		// grab the top level links that are visible on menu
 		links = nodes
 			.filter((node: any) => node.visible.menu)

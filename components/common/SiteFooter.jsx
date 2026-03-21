@@ -7,8 +7,6 @@ import { CgSoftwareDownload } from "react-icons/cg"
  */
 
 const SiteFooter = ({ footer, header }) => {
-  console.log('asdkjl;asd')
-  console.log(footer)
 	return (
 		<footer className="px-8 py-8 mt-28">
       <div className="bg-black h-[1px] w-full my-4"></div>

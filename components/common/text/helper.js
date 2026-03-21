@@ -24,7 +24,7 @@ export const StyledText = ({style, color, content, spacingBottom}) => {
 		case 'h3':
 			return (<h3 className={`text-${textColor} mb-${spacingBottom}`}> {content} </h3>)
 		case 'h4':
-			return (<h4 className={`text-${textColor} mb-${spacingBottom}`}> {content} </h4>)
+			return (<h4 className={`text-${textColor} mb-${spacingBottom}`}> {content} </h4>) 
 		case 'h5':
 			return (<h5 className={`text-${textColor} mb-${spacingBottom}`}> {content} </h5>)
 		case 'h6':
@@ -39,7 +39,6 @@ export const StyledText = ({style, color, content, spacingBottom}) => {
 }
 
 export const RichStyledText = ({style, color, content}) => {
-  console.log(color)
 	const textColor = color == 'gray' ? 'gray-500' : 'black'
 	return(
 		<div

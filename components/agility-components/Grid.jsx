@@ -37,7 +37,6 @@ const Grid = async ({ module, languageCode }) => {
       ) : (
         <div className={`grid grid-cols-${fields?.gridcolumns} gap-8`}>
           {fields?.nodes?.map((node, index) => {
-            console.log(node)
             if (node?.fields?.nodeType == "textImage") return <TextNode index={index} grid={fields} node={node} /> 
             if (node?.fields?.nodeType == "color") return <ColorSwatch node={node} /> 
             if (node?.fields?.nodeType == "qa") return <QANode node={node} /> 

@@ -9,7 +9,6 @@ const DownloadNode = async ({ module, languageCode }) => {
     contentID: module.contentid,
     languageCode,
   })
-  console.log(fields)
   return (
 		<div id={fields?.navigationID || ''} style={{ width: `${fields?.nodeWidth}%` }} className="pl-20 pr-4 relative mt-20" data-agility-component={contentID}>
       <div className="mb-4 mb-8 mb-12 hidden"></div>

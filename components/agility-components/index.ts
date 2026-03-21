@@ -22,8 +22,6 @@ const allModules = [
  * @returns
  */
 export const getModule = (moduleName: string): any | null => {
-  console.log('Module name:')
-  console.log(moduleName)
 	if (!moduleName) return null;
 	const obj = allModules.find(
 		(m) => m.name.toLowerCase() === moduleName.toLowerCase()
