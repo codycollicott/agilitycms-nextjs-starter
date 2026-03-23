@@ -126,7 +126,6 @@ export async function GET(req) {
         const query = searchParams.get("query");
 
         if (!index) {
-            console.log("Search index is empty, loading...");
             await loadSitemapData();
         }
 

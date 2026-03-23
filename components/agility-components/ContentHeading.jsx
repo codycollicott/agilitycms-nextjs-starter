@@ -6,7 +6,6 @@ const ContentHeading = async ({ module, languageCode }) => {
     contentID: module.contentid,
     languageCode,
   })
-  console.log(fields)
 	if (fields?.image) return (
     <div className=""> <img className="w-full" src={fields?.image?.url} /> </div>
   )

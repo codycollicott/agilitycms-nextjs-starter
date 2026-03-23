@@ -16,20 +16,6 @@ const SiteHeader = ({ header }: Props) => {
 
   const [hash, setHash] = useState("");
 
-  useEffect(() => {
-    const handleHashChange = () => {
-      setHash(window.location.hash.replace("#", ""));
-    };
-
-    handleHashChange(); // initial
-    window.addEventListener("hashchange", handleHashChange);
-
-    return () => {
-      window.removeEventListener("hashchange", handleHashChange);
-    };
-  }, []);
-
-  
   if (!header) {
 		return (
 			<header className="relative p-8 text-center">
@@ -39,28 +25,12 @@ const SiteHeader = ({ header }: Props) => {
 	}
   
 	return (
-		<header className="w-1/4 bg-primary relative mx-auto p-8">
+		<header className="w-1/4 bg-primary p-8 sticky top-0 h-screen overflow-y-scroll">
 			<div className="max-w-(--breakpoint-xl) mx-auto">
 				<div className="flex-col">
-					
-					<div className="flex items-center space-x-4">
-						
-						<div className="-mr-2 -my-2 md:hidden">
-							<button
-								onClick={() => setOpen(!open)}
-								aria-label="Toggle Menu"
-								type="button"
-								className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
-							>
-								{/* <!-- Heroicon name: menu --> */}
-								<CgArrowDown className="w-4" />
-
-							</button>
-						</div>
-					</div>
 					<nav className="flex-col">
 						{header.links.map((navitem:any, index) => {
-              const isParentActive = pathname.includes(navitem.path)
+              const isParentActive = pathname === navitem.path || pathname.startsWith(navitem.path + "/");
 							if (navitem?.children) {
 								return (
 									<div className="">
@@ -73,13 +43,16 @@ const SiteHeader = ({ header }: Props) => {
 										{subMenu == index && (
 											<div className="ml-4 mt-2 flex flex-col"> 
 												{navitem?.children?.map((item:any) => {
-                          console.log((`${navitem?.children?.[0]?.path}${item?.redirect?.url}`))
-                          console.log(pathname)
                           const isChildActive = (`${pathname}${hash ? '#'+hash : ''}`).includes(`${navitem?.children?.[0]?.path}${item?.redirect?.url}`)
                           return (
                             <Link
-                              href={item?.redirect?.url ? `${navitem?.children?.[0]?.path}${item?.redirect?.url}` : item.path}
+                              href={`${navitem?.children?.[0]?.path}${item?.redirect?.url || ''}`}
                               key={`mobile-${index}`}
+                              onClick={() => {
+                                const url = item?.redirect?.url || "";
+                                const hash = url.split("#")[1];
+                                if (hash) setHash(hash);
+                              }}
                               className={`${(isChildActive && isParentActive) ? 'bg-[#333] text-[#FFF]' : 'text-[#CCC]'} p-2 text-base`}
                             >
                               {item.title || item?.menuText}
@@ -99,14 +72,11 @@ const SiteHeader = ({ header }: Props) => {
                     {navitem.title}
                   </Link>
                 )
-                
 							}
 						})}
 					</nav>
 				</div>
 			</div>
-
-			
 		</header>
 	)
 }

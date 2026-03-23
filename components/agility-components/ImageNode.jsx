@@ -6,10 +6,12 @@ const ImageNode = async ({ module, languageCode }) => {
     contentID: module.contentid,
     languageCode,
   })
+  console.log(fields)
   return (
-		<div className="pl-20 pr-4 relative mt-20" data-agility-component={contentID}>
+		<div id={fields?.navigationID || ''} className="pl-20 pr-4 relative mt-20" data-agility-component={contentID}>
       {(fields?.hideTitle !== 'true') && (
         <StyledText 
+          weight={fields?.titleFontWeight}
           color={fields?.titleColor} 
           content={fields?.title} 
           style={fields?.titleStyle}
@@ -25,6 +27,10 @@ const ImageNode = async ({ module, languageCode }) => {
         spacingBottom={fields?.contentSpacingBottom}
       />
 			<img src={fields?.imageBackup?.url} />
+      {fields?.imageDisclaimer && (
+        <p className="mt-2"> {fields?.imageDisclaimer} </p>
+      )}
+      
 		</div>
   )
 }

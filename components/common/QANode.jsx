@@ -5,7 +5,6 @@ import { StyledText } from "./text/helper"
 const QANode = ({ node }) => {
 
   const parseStatusString = (input) => {
-    console.log(input)
     let icon = "check"; // default
     let cleaned = input;
 
@@ -34,12 +33,13 @@ const QANode = ({ node }) => {
     .split(/<\/p>/)
     .map(item => item.replace(/<p>/, "").trim())
     .filter(Boolean);
-
+console.log(node?.fields)
 
   return (
     <div>
       {node?.fields?.hideTitle !== 'true' && (
         <StyledText 
+          weight={node?.fields?.titleFontWeight}
           color={node?.fields?.titleColor} 
           style={node?.fields?.titleStyle}
           content={node?.fields?.title}

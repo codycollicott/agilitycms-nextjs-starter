@@ -64,9 +64,7 @@ function useAutocomplete({ close }) {
           async getItems() {
 
             const response = await fetch(`/api/search?query=${query}`);
-            console.log(response)
 						const items = await response.json()
-						console.log(response)
             return items || []
           },
           getItemUrl({ item }) {

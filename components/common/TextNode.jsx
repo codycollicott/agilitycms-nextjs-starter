@@ -10,7 +10,7 @@ const TextNode = ({ node, grid, index }) => {
 			</header>
 		)
 	}
-
+  
 	return (
 		<div className={`${grid?.hasBorder == "true" && 'border-l-1 border-black pl-2'}`}>
 			{node?.fields?.backupImage?.url && (
@@ -20,6 +20,7 @@ const TextNode = ({ node, grid, index }) => {
 			)}
 			{grid?.isNumbered == "true" && (
 				<StyledText 
+          weight={node?.fields?.TitleFontWeight} 
 					color={node?.fields?.titleColor} 
 					content={`${index + 1}.`} 
 					style={node?.fields?.titleStyle}
@@ -27,10 +28,10 @@ const TextNode = ({ node, grid, index }) => {
 				/>
 			)}
 			<StyledText 
+        weight={node?.fields?.titleFontWeight} 
 				color={node?.fields?.titleColor} 
 				content={node?.fields?.title} 
 				style={node?.fields?.titleStyle}
-				weight={node?.fields?.titleWeight}
 				spacingBottom={node?.fields?.titleSpacingBottom}
 			/>
 

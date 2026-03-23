@@ -17,6 +17,7 @@ const Grid = async ({ module, languageCode }) => {
 			<div className="grid-cols-4 grid-cols-5 grid-cols-3 grid-cols-2 text-sm hidden"></div>
       {fields?.hideTitle !== 'true' && (
         <StyledText 
+          weight={fields?.titleFontWeight}
           color={fields?.titleColor} 
           style={fields?.titleStyle}
           content={fields?.title}
@@ -38,7 +39,7 @@ const Grid = async ({ module, languageCode }) => {
         <div className={`grid grid-cols-${fields?.gridcolumns} gap-8`}>
           {fields?.nodes?.map((node, index) => {
             if (node?.fields?.nodeType == "textImage") return <TextNode index={index} grid={fields} node={node} /> 
-            if (node?.fields?.nodeType == "color") return <ColorSwatch node={node} /> 
+            if (node?.fields?.nodeType == "color") return <ColorSwatch  node={node} /> 
             if (node?.fields?.nodeType == "qa") return <QANode node={node} /> 
             return <div> </div>
           })}

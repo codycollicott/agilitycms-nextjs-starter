@@ -36,6 +36,12 @@ const ColorSwatch = ({ node, height='auto' }) => {
         {node?.fields?.colorSubTitle && (
           <p className={`${getTextColor(node?.fields?.colorSwatchSubTitleColor)} text-xl mb-4`}> {node?.fields?.colorSubTitle}</p>
         )}
+        {node?.fields?.showsecondarycolorcodes !== 'false' && (
+          <div className="flex">
+            <p className={`${getTextColor(node?.fields?.secondaryColorCodeColor)} w-1/4`}> RGB </p>
+            <p className={`${getTextColor(node?.fields?.secondaryColorCodeColor)}`}> {node?.fields?.rGBcode} </p>
+          </div>
+        )}
         {node?.fields?.hideHex !== 'true' && (
           <div className="flex">
             <p className={`${getTextColor(node?.fields?.secondaryColorCodeColor)} w-1/4`}> HEX </p>
@@ -44,11 +50,6 @@ const ColorSwatch = ({ node, height='auto' }) => {
         )}
         {node?.fields?.showsecondarycolorcodes !== 'false' && (
           <div> 
-        
-            <div className="flex">
-              <p className={`${getTextColor(node?.fields?.secondaryColorCodeColor)} w-1/4`}> RGB </p>
-              <p className={`${getTextColor(node?.fields?.secondaryColorCodeColor)}`}> {node?.fields?.rGBcode} </p>
-            </div>
             <div className="flex">
               <p className={`${getTextColor(node?.fields?.secondaryColorCodeColor)} w-1/4`}> CMYK </p>
               <p className={`${getTextColor(node?.fields?.secondaryColorCodeColor)} `}> {node?.fields?.cMYKcode} </p>
