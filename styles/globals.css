@@ -19,7 +19,9 @@
   font-style: normal;
   font-display: swap;
 }
-
+[data-agility-field="textblob"] p {
+  margin-bottom: 20px;
+}
 .p-sm p {
   font-size: .875rem;		
 }

@@ -15,7 +15,7 @@ const ColorSwatch = ({ node, height='auto' }) => {
       return 'h-32'
     }
     if (height !== 'auto') {
-      return height
+      return `${height}`
     }
     return 'min-h-[235px]'
   }

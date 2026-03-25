@@ -6,7 +6,7 @@ import { ArrowDownTrayIcon } from "@heroicons/react/24/solid"
 
 const SiteFooter = ({ footer, header }) => {
 	return (
-		<footer className="px-8 py-8 mt-16 md:mt-28">
+		<footer className="px-8 py-8 mt-12 md:mt-28">
       <div className="bg-black h-[1px] w-full my-4"></div>
 			<img src={header?.logo?.url} />
       <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-12">
@@ -39,7 +39,7 @@ const SiteFooter = ({ footer, header }) => {
           </Link>
         </div>
       </div>
-      <div className="flex flex-col md:flex-row gap-4 justify-end mt-8 md:mt-12">
+      <div className="flex flex-col md:flex-row justify-start flex-wrap gap-4 xl:justify-end mt-8 md:mt-12">
         <Link href={footer?.data?.link1?.href}>
           <div className="border flex rounded-sm px-6 py-2 items-center">  {footer?.data?.link1?.text} </div>
         </Link>
@@ -58,14 +58,14 @@ const SiteFooter = ({ footer, header }) => {
         </button>
       </div>
       <div className="bg-black h-[1px] w-full my-4"></div>
-      <div className="flex flex-col md:flex-row gap-4 justify-between mt-4">
+      <div className="flex flex-wrap justify-start md:flex-row gap-2  mt-4">
         {footer?.links?.[2]?.map(link => (
           <Link href={link?.fields?.linkUrl || ''}>
             <p className="text-gray-600 text-sm mb-2">{link?.fields?.linkName}</p>
           </Link>
         ))}
       </div>
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col xl:flex-row items-start xl:justify-between xl:items-center">
         <p className="text-gray-600 mt-4 text-sm"> {footer?.data?.copyrightText} </p>
         <div className="flex items-center">
           {footer?.data?.linkedinURL && (

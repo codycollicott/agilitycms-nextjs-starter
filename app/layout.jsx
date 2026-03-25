@@ -38,7 +38,7 @@ export default async function RootLayout({
   
   return (
     <html lang="en" className={`bg-white`}>
-      <div className="md:grid-cols-4 md:grid-cols-5 md:grid-cols-3 md:grid-cols-2 grid-cols-2 grid-cols-1 text-sm hidden xl:grid-cols-3"></div>
+      <div className="xl:h-full md:grid-cols-4 md:grid-cols-5 md:grid-cols-3 md:grid-cols-2 grid-cols-2 grid-cols-1 text-sm hidden xl:grid-cols-3"></div>
       <body data-agility-guid={process.env.AGILITY_GUID} className="bg-white">
         <div id="site-wrapper">
           <div id="site" className="w-full xl:w-[1280px] mx-auto px-0 md:px-8">
