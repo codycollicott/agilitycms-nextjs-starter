@@ -40,7 +40,7 @@ export default async function RootLayout({
     <html lang="en" className={`bg-white`}>
       <body data-agility-guid={process.env.AGILITY_GUID} className="bg-white">
         <div id="site-wrapper">
-          <div id="site" className="container mx-auto">
+          <div id="site" className="w-full xl:w-[1280px] mx-auto px-0 md:px-8">
             <PreviewBar
               {...{ isDevelopmentMode, isPreview, startPreviewMode }}
             />

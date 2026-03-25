@@ -36,7 +36,7 @@ const Grid = async ({ module, languageCode }) => {
       {fields?.masonlayout == 'true' ? (
         <MasonryGrid items={fields?.nodes} />
       ) : (
-        <div className={`grid grid-cols-1 md:grid-cols-${fields?.gridcolumns} gap-8`}>
+        <div className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-${fields?.gridcolumns} gap-8`}>
           {fields?.nodes?.map((node, index) => {
             if (node?.fields?.nodeType == "textImage") return <TextNode index={index} grid={fields} node={node} /> 
             if (node?.fields?.nodeType == "color") return <ColorSwatch  node={node} /> 
