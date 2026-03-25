@@ -27,13 +27,15 @@ const TextNode = ({ node, grid, index }) => {
           spacing={node?.fields?.titleSpacingBottom}
 				/>
 			)}
-			<StyledText 
-        weight={node?.fields?.titleFontWeight} 
-				color={node?.fields?.titleColor} 
-				content={node?.fields?.title} 
-				style={node?.fields?.titleStyle}
-				spacingBottom={node?.fields?.titleSpacingBottom}
-			/>
+      {node?.fields?.hideTitle !== 'true' && (
+        <StyledText 
+          weight={node?.fields?.titleFontWeight} 
+          color={node?.fields?.titleColor} 
+          content={node?.fields?.title} 
+          style={node?.fields?.titleStyle}
+          spacingBottom={node?.fields?.titleSpacingBottom}
+        />
+      )}
 
       <RichStyledText 
         color={node?.fields?.subTitleColor} 

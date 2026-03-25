@@ -14,7 +14,7 @@ const Grid = async ({ module, languageCode }) => {
   
   return (
 		<div id={fields?.navigationID || ''} className="pl-8 md:pl-20 pr-8 md:pr-4 relative mt-16 md:mt-20" data-agility-component={contentID}>
-			<div className="md:grid-cols-4 md:grid-cols-5 md:grid-cols-3 md:grid-cols-2 text-sm hidden"></div>
+			
       {fields?.hideTitle !== 'true' && (
         <StyledText 
           weight={fields?.titleFontWeight}
