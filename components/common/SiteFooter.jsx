@@ -1,52 +1,50 @@
-import Image from "next/image"
 import Link from "next/link"
-import React from "react"
-import { CgSoftwareDownload } from "react-icons/cg"
+import { ArrowDownTrayIcon } from "@heroicons/react/24/solid"
 /**
  * This footer is not part of the content in the CMS, feel free to remove this for production use.
  */
 
 const SiteFooter = ({ footer, header }) => {
 	return (
-		<footer className="px-8 py-8 mt-28">
+		<footer className="px-8 py-8 mt-16 md:mt-28">
       <div className="bg-black h-[1px] w-full my-4"></div>
 			<img src={header?.logo?.url} />
-      <div className="mt-12 grid grid-cols-3 gap-12">
-        <div>
+      <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-12">
+        <div className="flex md:block flex-wrap gap-2">
           {footer?.links?.[0]?.map(link => (
             <Link href={link?.fields?.linkUrl || ''}>
               <p className="mb-2">{link?.fields?.linkName}</p>
             </Link>
           ))}
         </div>
-        <div>
+        <div className="flex md:block flex-wrap gap-2">
           {footer?.links?.[1]?.map(link => (
             <Link href={link?.fields?.linkUrl || ''}>
               <p className="mb-2">{link?.fields?.linkName}</p>
             </Link>
           ))}
         </div>
-        <div>
+        <div className="flex md:block flex-wrap gap-2">
           <Link href={footer?.data?.downloadbutton1URL || ''}>
             <div className="flex mb-2 items-center">
               <p className="mr-2">{footer?.data?.downloadButtonLabel1}</p>
-              <CgSoftwareDownload />
+              <ArrowDownTrayIcon className="w-4" />
             </div>
           </Link>
           <Link href={footer?.data?.downloadbutton2URL || ''}>
             <div className="flex mb-2 items-center">
               <p className="mr-2">{footer?.data?.downloadButtonLabel2}</p>
-              <CgSoftwareDownload />
+              <ArrowDownTrayIcon className="w-4" />
             </div>
           </Link>
         </div>
       </div>
-      <div className="flex justify-end mt-12">
+      <div className="flex flex-col md:flex-row gap-4 justify-end mt-8 md:mt-12">
         <Link href={footer?.data?.link1?.href}>
-          <div className="border flex rounded-sm px-6 py-2 items-center mr-2">  {footer?.data?.link1?.text} </div>
+          <div className="border flex rounded-sm px-6 py-2 items-center">  {footer?.data?.link1?.text} </div>
         </Link>
         <a href={`mailto:${footer?.data?.link2?.href}`}>
-          <div className="border flex rounded-sm px-6 py-2 items-center mr-2"> <img className="w-4 mr-2" src='/env.svg' /> {footer?.data?.link2?.text} </div>
+          <div className="border flex rounded-sm px-6 py-2 items-center"> <img className="w-4 mr-2" src='/env.svg' /> {footer?.data?.link2?.text} </div>
         </a>
         
         <button className="p-[2px] rounded-lg bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500">
@@ -60,7 +58,7 @@ const SiteFooter = ({ footer, header }) => {
         </button>
       </div>
       <div className="bg-black h-[1px] w-full my-4"></div>
-      <div className="flex gap-4 justify-between mt-4">
+      <div className="flex flex-col md:flex-row gap-4 justify-between mt-4">
         {footer?.links?.[2]?.map(link => (
           <Link href={link?.fields?.linkUrl || ''}>
             <p className="text-gray-600 text-sm mb-2">{link?.fields?.linkName}</p>

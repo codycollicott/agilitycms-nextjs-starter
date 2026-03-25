@@ -1,6 +1,5 @@
 import { getContentItem } from "lib/cms/getContentItem"
 import { renderHTML } from "@agility/nextjs"
-import { CgSoftwareDownload, CgArrowRight } from "react-icons/cg"
 import Link from "next/link"
 import { StyledText, RichStyledText } from "../../components/common/text/helper"
 const DownloadNode = async ({ module, languageCode }) => {
@@ -11,8 +10,8 @@ const DownloadNode = async ({ module, languageCode }) => {
   })
   
   return (
-		<div id={fields?.navigationID || ''} style={{ width: `${fields?.nodeWidth}%` }} className="pl-20 pr-4 relative mt-20" data-agility-component={contentID}>
-      <div className="mb-4 mb-8 mb-12 hidden"></div>
+		<div id={fields?.navigationID || ''} className={`w-full md:w-[${fields?.nodeWidth}%] pl-8 md:pl-20 pr-8 md:pr-4 relative mt-16 md:mt-20`} data-agility-component={contentID}>
+      <div className="mb-4 md:w-[33%] md:w-[66%] md:w-[50%] md:w-[75%] mb-8 mb-12 hidden"></div>
 			<StyledText 
         weight={fields?.titleFontStyle}
 				color={fields?.titleColor} 

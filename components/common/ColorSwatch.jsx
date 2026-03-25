@@ -1,6 +1,7 @@
 "use client"
 import { StyledText } from "../../components/common/text/helper"
 const ColorSwatch = ({ node, height='auto' }) => {
+
 	if (!node) {
 		return (
 			<header className="relative p-8 text-center">
@@ -8,6 +9,16 @@ const ColorSwatch = ({ node, height='auto' }) => {
 			</header>
 		)
 	}
+  const colorNodeHeight = () => {
+    console.log(height)
+    if (node?.fields?.colorHeight == 'square') {
+      return 'h-32'
+    }
+    if (height !== 'auto') {
+      return height
+    }
+    return 'min-h-[235px]'
+  }
   const colorNodeStyle = (type) => {
     if (type == 'true') {
       return { borderLeft: `12px solid #${node?.fields?.hexcode}` }
@@ -23,7 +34,7 @@ const ColorSwatch = ({ node, height='auto' }) => {
 
 	return (
 		<div 
-      className={` ${node?.fields?.colorHasStroke ? 'border border-1 border-[#666]' : ''} ${height == 'auto' ? 'min-h-[235px]' : height} p-4 flex flex-col justify-between`} 
+      className={` ${node?.fields?.colorHasStroke ? 'border border-1 border-[#666]' : ''} ${colorNodeHeight()} p-4 flex flex-col justify-between`} 
       style={colorNodeStyle(node?.fields?.displayAsBorder)}
     >
       <div>

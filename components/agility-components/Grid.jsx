@@ -13,8 +13,8 @@ const Grid = async ({ module, languageCode }) => {
   })
   
   return (
-		<div id={fields?.navigationID || ''} className="pl-20 pr-4 relative mt-20" data-agility-component={contentID}>
-			<div className="grid-cols-4 grid-cols-5 grid-cols-3 grid-cols-2 text-sm hidden"></div>
+		<div id={fields?.navigationID || ''} className="pl-8 md:pl-20 pr-8 md:pr-4 relative mt-16 md:mt-20" data-agility-component={contentID}>
+			<div className="md:grid-cols-4 md:grid-cols-5 md:grid-cols-3 md:grid-cols-2 text-sm hidden"></div>
       {fields?.hideTitle !== 'true' && (
         <StyledText 
           weight={fields?.titleFontWeight}
@@ -36,7 +36,7 @@ const Grid = async ({ module, languageCode }) => {
       {fields?.masonlayout == 'true' ? (
         <MasonryGrid items={fields?.nodes} />
       ) : (
-        <div className={`grid grid-cols-${fields?.gridcolumns} gap-8`}>
+        <div className={`grid grid-cols-1 md:grid-cols-${fields?.gridcolumns} gap-8`}>
           {fields?.nodes?.map((node, index) => {
             if (node?.fields?.nodeType == "textImage") return <TextNode index={index} grid={fields} node={node} /> 
             if (node?.fields?.nodeType == "color") return <ColorSwatch  node={node} /> 

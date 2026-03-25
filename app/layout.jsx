@@ -4,7 +4,6 @@ import SiteFooter from "components/common/SiteFooter"
 import SiteHeader from "components/common/SiteHeader"
 import { getAgilityContext } from "lib/cms/getAgilityContext"
 
-import { Inter } from "next/font/google"
 import TopHeader from "components/common/TopHeader"
 import "../styles/globals.css"
 import { getHeaderContent } from "lib/cms-content/getHeaderContent"
@@ -12,21 +11,15 @@ import { getFooterContent } from "lib/cms-content/getFooterContent"
 import { redirect } from "next/navigation"
 import Script from "next/script"
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-})
 
 export default async function RootLayout({
   children,
-}: {
-  children: React.ReactNode
 }) {
   const { locale, sitemap, isDevelopmentMode, isPreview } = await getAgilityContext()
   const header = await getHeaderContent({ sitemap, locale })
   const footer = await getFooterContent({locale})
 
-  async function startPreviewMode(pathname: string) {
+  async function startPreviewMode(pathname) {
     "use server";
 
     //turn on draft/preview mode
@@ -55,7 +48,7 @@ export default async function RootLayout({
             <div className="flex flex-col min-h-screen">
               <div className="flex">
                 <SiteHeader {...{ header }} />
-                <main className='w-3/4'>
+                <main className='w-full md:w-3/4'>
                   <div className="">
                     {children}
                   </div>

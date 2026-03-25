@@ -6,9 +6,16 @@ const ImageNode = async ({ module, languageCode }) => {
     contentID: module.contentid,
     languageCode,
   })
+  const GetImage = () => {
+    if (fields?.image) {
+      const rawImage = JSON.parse(fields?.image);
+      return <img src={rawImage?.url} />
+    }
+    return <img src={fields?.imageBackup?.url} />
+  }
   console.log(fields)
   return (
-		<div id={fields?.navigationID || ''} className="pl-20 pr-4 relative mt-20" data-agility-component={contentID}>
+		<div id={fields?.navigationID || ''} className="pl-8 md:pl-20 pr-8 md:pr-4 relative mt-12 md:mt-20" data-agility-component={contentID}>
       {(fields?.hideTitle !== 'true') && (
         <StyledText 
           weight={fields?.titleFontWeight}
@@ -26,7 +33,7 @@ const ImageNode = async ({ module, languageCode }) => {
         content={fields?.content} 
         spacingBottom={fields?.contentSpacingBottom}
       />
-			<img src={fields?.imageBackup?.url} />
+			<GetImage />
       {fields?.imageDisclaimer && (
         <p className="mt-2"> {fields?.imageDisclaimer} </p>
       )}

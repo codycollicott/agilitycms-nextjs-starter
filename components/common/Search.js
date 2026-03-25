@@ -16,7 +16,7 @@ import {
   createAutocomplete,
 } from '@algolia/autocomplete-core'
 import clsx from 'clsx'
-import {FaLink} from "react-icons/fa6"
+import { LinkIcon } from '@heroicons/react/24/solid'
 
 
 
@@ -44,7 +44,7 @@ function useAutocomplete({ close }) {
   let [autocomplete] = useState(() =>
     createAutocomplete({
       id,
-      placeholder: 'Find something...',
+      placeholder: 'Search...',
       defaultActiveItemId: 0,
       onStateChange({ state }) {
         setAutocompleteState(state)
@@ -218,7 +218,7 @@ function SearchResult({
       >
 
 				<div className=''>
-      		<FaLink className='h-5 w-5 mr-2 text-yellow-500' />
+      		<LinkIcon className='h-5 w-5 mr-2 text-yellow-500' />
       	</div>
        	<HighlightQuery text={result.title} query={query} />
       </div>
@@ -282,7 +282,7 @@ function SearchResults({
   }
 
   return (
-    <ul {...autocomplete.getListProps()}>
+    <ul className='absolute right-0 p-4 rounded-sm border border-[#ccc] bg-white z-20' {...autocomplete.getListProps()}>
       {collection.items.map((result, resultIndex) => { 
         
         // console.log('result', result)
@@ -309,8 +309,9 @@ const SearchInput = forwardRef(function SearchInput({ autocomplete, autocomplete
       <input
         ref={inputRef}
         data-autofocus
+        onFocus={() => {console.log('in focus')}}
         className={clsx(
-          'border border-gray-600 rounded-md px-4 py-2 bg-gray-200 w-full',
+          'border border-gray-600 rounded-md px-4 py-2 bg-gray-200 w-[350px]',
           autocompleteState.status === 'stalled' ? 'pr-11' : 'pr-4',
         )}
         {...inputProps}
@@ -386,7 +387,7 @@ function SearchDialog({
     <div className='relative' {...autocomplete.getRootProps({})}>
       <form
         ref={formRef}
-        className='absolute w-full'
+        className='w-full'
         {...autocomplete.getFormProps({
           inputElement: inputRef.current,
         })}
@@ -458,7 +459,7 @@ export function Search() {
   }, [])
 
   return (
-    <div className="block lg:block lg:max-w-md lg:flex-auto justify-end">
+    <div className="">
       <Suspense fallback={null}>
         <SearchDialog className="hidden lg:block" {...dialogProps} />
       </Suspense>
@@ -474,7 +475,7 @@ export function MobileSearch() {
       <button
         type="button"
         className="flex h-6 w-6 items-center justify-center rounded-md transition hover:bg-zinc-900/5 ui-not-focus-visible:outline-none lg:hidden dark:hover:bg-white/5"
-        aria-label="Find something..."
+        aria-label="Search..."
         {...buttonProps}
       >
         <SearchIcon className="h-5 w-5 stroke-zinc-900" />

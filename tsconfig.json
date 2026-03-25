@@ -23,6 +23,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
-  ],
+, "components/common/TopHeader.jsx", "components/common/PreviewBar.jsx", "app/layout.jsx"  ],
   "exclude": ["node_modules"]
 }

@@ -88,24 +88,51 @@
   If we ever want to remove these styles, we need to add an explicit border
   color utility to any element that depends on these defaults.
 */
+
 @layer base {
   h1 {
     @apply text-9xl;
+  }
+  @media (max-width: 768px) {
+    h1 {
+      @apply text-8xl;
+    }
   }
 
   h2 {
     @apply text-8xl;
   }
+  @media (max-width: 768px) {
+    h2 {
+      @apply text-7xl;
+    }
+  }
+
 
   h3 {
     @apply text-7xl;
+  }
+  @media (max-width: 768px) {
+    h3 {
+      @apply text-6xl;
+    }
   }
 
   h4 {
     @apply text-6xl;
   }
+  @media (max-width: 768px) {
+    h4 {
+      @apply text-5xl;
+    }
+  }
   h5 {
     @apply text-5xl;
+  }
+  @media (max-width: 768px) {
+    h5 {
+      @apply text-4xl;
+    }
   }
 
   h6 {

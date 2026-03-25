@@ -4,19 +4,12 @@ import classNames from "classnames"
 import clsx from "clsx"
 import Image from "next/image"
 import React, { useState } from "react"
-import { FaInfoCircle, FaGithub, FaEye, FaTimes, FaChevronDown, FaChevronUp, FaSpinner } from "react-icons/fa"
 
-
-interface Props {
-	isPreview: boolean | undefined
-	isDevelopmentMode: boolean | undefined
-	startPreviewMode: (pathname: string) => Promise<void>
-}
 
 /**
  * This is a preview bar that is enabled by default to handle viewing content in preview & live mode, remove this for production use.
  **/
-const PreviewBar = ({ isPreview, isDevelopmentMode, startPreviewMode }: Props) => {
+const PreviewBar = ({ isPreview, isDevelopmentMode, startPreviewMode }) => {
 	const [open, setOpen] = useState(false)
 	const [isEnteringPreview, setIsEnteringPreview] = useState(false)
 	const [isExitingPreview, setIsExitingPreview] = useState(false)
@@ -67,7 +60,6 @@ const PreviewBar = ({ isPreview, isDevelopmentMode, startPreviewMode }: Props) =
 					</button>
 					{isPreview && (
 						<div className="absolute -top-0.5 p-0.5 -right-0.5 dark:bg-gray-600 bg-gray-200 rounded-full flex items-center justify-center">
-							<FaEye className="w-3 h-3 text-gray-500 dark:text-gray-200" />
 						</div>
 					)}
 				</>
@@ -77,7 +69,7 @@ const PreviewBar = ({ isPreview, isDevelopmentMode, startPreviewMode }: Props) =
 			{open && (
 				<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30">
 					<div className="w-[420px] max-w-[95vw] bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 p-6 flex flex-col gap-4 animate-fade-in relative">
-						<button onClick={() => setOpen(false)} className="absolute top-3 right-3 rounded-full p-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition"><FaTimes className="w-6 h-6 text-gray-700 dark:text-gray-200" /></button>
+						<button onClick={() => setOpen(false)} className="absolute top-3 right-3 rounded-full p-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition"></button>
 						<div className="flex items-center gap-3 mb-2">
 							<img src="https://static.agilitycms.com/layout/img/logo-original.svg" alt="Agility CMS" className="h-7" />
 							<span className={`text-sm px-3 py-1 rounded font-bold ${isPreview ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200' : 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'}`}>{isPreview ? 'Preview' : 'Live'}</span>
@@ -100,7 +92,6 @@ const PreviewBar = ({ isPreview, isDevelopmentMode, startPreviewMode }: Props) =
 								>
 									{isExitingPreview ? (
 										<>
-											<FaSpinner className="w-4 h-4 mr-2 animate-spin" />
 											Exiting Preview...
 										</>
 									) : (
@@ -119,7 +110,6 @@ const PreviewBar = ({ isPreview, isDevelopmentMode, startPreviewMode }: Props) =
 								>
 									{isEnteringPreview ? (
 										<>
-											<FaSpinner className="w-4 h-4 mr-2 animate-spin" />
 											Entering Preview...
 										</>
 									) : (
@@ -128,8 +118,8 @@ const PreviewBar = ({ isPreview, isDevelopmentMode, startPreviewMode }: Props) =
 								</button>
 							)}
 							<div className="flex gap-4 justify-between mt-2">
-								<a href="https://agilitycms.com/docs" target="_blank" rel="noreferrer" title="Agility Docs" className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200 hover:underline"><FaInfoCircle />Agility Docs</a>
-								<a href="https://github.com/agility/nextjs-demo-site-2025" target="_blank" rel="noreferrer" title="View on GitHub" className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200 hover:underline"><FaGithub />View Source on GitHub</a>
+								<a href="https://agilitycms.com/docs" target="_blank" rel="noreferrer" title="Agility Docs" className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200 hover:underline">Agility Docs</a>
+								<a href="https://github.com/agility/nextjs-demo-site-2025" target="_blank" rel="noreferrer" title="View on GitHub" className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200 hover:underline">View Source on GitHub</a>
 							</div>
 						</div>
 					</div>
