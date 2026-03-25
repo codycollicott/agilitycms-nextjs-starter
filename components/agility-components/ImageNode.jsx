@@ -1,19 +1,28 @@
 import { getContentItem } from "lib/cms/getContentItem"
 import { StyledText, RichStyledText } from "../common/text/helper"
+import Link from "next/link"
 const ImageNode = async ({ module, languageCode }) => {
   
   const { fields, contentID } = await getContentItem({
     contentID: module.contentid,
     languageCode,
   })
+  
+  const ImageWrapLink = ({children}) => {
+    if (fields?.imageURL) {
+      return (<Link href={fields?.imageURL || ''}> {children}</Link>)
+    }
+    return <span>{children}</span>
+  }
+
   const GetImage = () => {
     if (fields?.image) {
       const rawImage = JSON.parse(fields?.image);
-      return <img src={rawImage?.url} />
+      return  <ImageWrapLink> <img src={rawImage?.url} />  </ImageWrapLink>
     }
-    return <img src={fields?.imageBackup?.url} />
+    return <ImageWrapLink> <img src={fields?.imageBackup?.url} />  </ImageWrapLink>
   }
-  console.log(fields)
+  
   return (
 		<div id={fields?.navigationID || ''} className="pl-8 md:pl-20 pr-8 md:pr-4 relative mt-12 md:mt-20" data-agility-component={contentID}>
       {(fields?.hideTitle !== 'true') && (

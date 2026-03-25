@@ -8,7 +8,6 @@ const DownloadNode = async ({ module, languageCode }) => {
     contentID: module.contentid,
     languageCode,
   })
-  
   return (
 		<div id={fields?.navigationID || ''} className={`w-full md:w-[${fields?.nodeWidth}%] pl-8 md:pl-20 pr-8 md:pr-4 relative mt-16 md:mt-20`} data-agility-component={contentID}>
       <div className="mb-4 md:w-[33%] md:w-[66%] md:w-[50%] md:w-[75%] mb-8 mb-12 hidden"></div>
@@ -39,7 +38,7 @@ const DownloadNode = async ({ module, languageCode }) => {
         </div>
       )}
       {(fields?.downloadLabel && (!fields?.hasBorder || fields?.hasBorder == 'false')) && (
-        <Link href={fields?.navigationURL || ''}>
+        <Link href={fields?.downloadURL || ''}>
           <div className="flex items-center">
             <StyledText 
               weight={fields?.labelFontWeight}

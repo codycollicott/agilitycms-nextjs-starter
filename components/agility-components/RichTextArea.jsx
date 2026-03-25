@@ -1,11 +1,8 @@
-import { renderHTML, Module, UnloadedModuleProps } from "@agility/nextjs"
+import { renderHTML } from "@agility/nextjs"
 import { getContentItem } from "lib/cms/getContentItem"
 
-interface RichText {
-	textblob: string
-}
 
-const RichTextArea = async ({ module, languageCode }: UnloadedModuleProps) => {
+const RichTextArea = async ({ module, languageCode }) => {
 	const {
 		fields: { textblob },
 		contentID,

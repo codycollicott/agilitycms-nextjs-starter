@@ -1,5 +1,5 @@
 import { getPageTemplate } from "components/agility-pages"
-import { PageProps, getAgilityPage } from "lib/cms/getAgilityPage"
+import { getAgilityPage } from "lib/cms/getAgilityPage"
 import { getAgilityContext } from "lib/cms/getAgilityContext"
 import agilitySDK from "@agility/content-fetch"
 
@@ -59,7 +59,7 @@ export async function generateStaticParams() {
  * Generate metadata for this page
  */
 export async function generateMetadata(
-	props: PageProps,
+	props: any,
 	parent: ResolvingMetadata
 ): Promise<Metadata> {
 	const { params } = props;  // Remove the 'await' here
@@ -76,7 +76,7 @@ export async function generateMetadata(
 		parent,
 	});
 }
-export default async function Page({ params }: PageProps) {
+export default async function Page({ params }: any) {
 
 	const agilityData = await getAgilityPage({ params });
 	if (!agilityData.page) notFound();
