@@ -10,13 +10,18 @@ const TextNode = ({ node, grid, index }) => {
 			</header>
 		)
 	}
-  
+  const GetImage = () => {
+    if (!node?.fields?.image && !node?.fields?.backupImage) return
+    if (node?.fields?.image) {
+      const rawImage = JSON.parse(node?.fields?.image);
+      return  <img src={rawImage?.url} />
+    }
+    return <img src={node?.fields?.backupImage?.url} />
+  }
 	return (
 		<div className={`${grid?.hasBorder == "true" && 'border-l-1 border-black pl-2'}`}>
-			{node?.fields?.backupImage?.url && (
-        <div className="h-[200px] bg-center bg-cover mb-4" style={{backgroundImage: `url(${node?.fields?.backupImage?.url})`}}>
-				  
-        </div>
+			{node?.fields?.imagePosition == 'aboveTitle' && (
+        <div className="mb-4"><GetImage /></div>
 			)}
 			{grid?.isNumbered == "true" && (
 				<StyledText 
@@ -36,7 +41,9 @@ const TextNode = ({ node, grid, index }) => {
           spacingBottom={node?.fields?.titleSpacingBottom}
         />
       )}
-
+      {node?.fields?.imagePosition != 'aboveTitle' && (
+        <GetImage />
+      )}
       <RichStyledText 
         color={node?.fields?.subTitleColor} 
         content={node?.fields?.subTitle} 

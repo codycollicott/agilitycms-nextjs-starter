@@ -25,53 +25,64 @@ const SiteHeader = ({ header }: Props) => {
 	}
   
 	return (
-		<header className="hidden md:block w-1/4 bg-primary p-8 sticky top-0 h-screen overflow-y-scroll">
+		<header className="hidden md:block w-1/4 bg-primary p-4 xl:p-8 sticky top-0 h-screen overflow-y-scroll">
 			<div className="max-w-(--breakpoint-xl) mx-auto">
 				<div className="flex-col">
 					<nav className="flex-col">
 						{header.links.map((navitem:any, index) => {
               const isParentActive = pathname === navitem.path || pathname.startsWith(navitem.path + "/");
+              
 							if (navitem?.children) {
 								return (
 									<div className="">
 										<div className="">
-                      <div onClick={() => {subMenu == index ? setSubMenu(null) : setSubMenu(index)}} className={`${isParentActive && 'bg-[#333]'} cursor-pointer p-2 flex justify-between items-center`}>
+                      <div onClick={() => {subMenu == index ? setSubMenu(null) : setSubMenu(index)}} className={`${isParentActive && 'bg-[#333]'} cursor-pointer py-2 flex justify-between items-center`}>
                         <p className={`text-base leading-6 font-medium text-white`}> {navitem.title} </p>
                         {subMenu == index ? <ArrowUpIcon className="w-4 text-white" /> : <ArrowDownIcon className="w-4 text-white" />}
 											 </div>
 										</div>
 										{subMenu == index && (
 											<div className="ml-4 mt-2 flex flex-col"> 
-												{navitem?.children?.map((item:any) => {
-                          const isChildActive = (`${pathname}${hash ? '#'+hash : ''}`).includes(`${navitem?.children?.[0]?.path}${item?.redirect?.url}`)
+												{navitem?.children?.map((item: any, index: number) => {
+                          const url = item?.redirect?.url || '';
+                          const [itemPathPart, itemHashPart] = url.split('#');
+
+                          const itemPath = `${navitem?.children?.[0]?.path}${itemPathPart}`;
+                          const itemHash = itemHashPart || '';
+
+                          const currentPath = pathname;
+                          const currentHash = hash || '';
+
+                          const isChildActive =
+                            currentPath === itemPath &&
+                            (itemHash ? currentHash === itemHash : !currentHash);
+
+                          const isDefaultChild =
+                            !currentHash &&
+                            index === 0 &&
+                            currentPath === navitem?.children?.[0]?.path;
+
                           return (
                             <Link
-                              href={`${navitem?.children?.[0]?.path}${item?.redirect?.url || ''}`}
+                              href={itemPath + (itemHash ? `#${itemHash}` : '')}
                               key={`mobile-${index}`}
                               onClick={() => {
-                                const url = item?.redirect?.url || "";
-                                const hash = url.split("#")[1];
-                                if (hash) setHash(hash);
+                                setHash(itemHash || '');
                               }}
-                              className={`${(isChildActive && isParentActive) ? 'bg-[#333] text-[#FFF]' : 'text-[#CCC]'} p-2 text-base`}
+                              className={`${
+                                (isChildActive || isDefaultChild)
+                                  ? 'bg-[#333] text-[#FFF]'
+                                  : 'text-[#CCC]'
+                              } p-2 text-base`}
                             >
                               {item.title || item?.menuText}
                             </Link>
-												)})}
+                          );
+                        })}
 											</div>
 										)} 
 									</div>
 								)
-							}else {
-                return (
-                  <Link
-                    href={navitem.path}
-                    key={`mobile-${index}`}
-                    className="text-base leading-6 font-medium text-white"
-                  >
-                    {navitem.title}
-                  </Link>
-                )
 							}
 						})}
 					</nav>

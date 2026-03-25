@@ -15,7 +15,7 @@ const TopHeaderInteractive = ({ links, logo }) => {
 	
 	return (
     <div>
-      <div className="flex items-center justify-between py-2 md:py-8 px-2">
+      <div className="flex items-center justify-between py-2 md:py-8 px-2 xl:px-2">
         <Link href="/" className="flex items-center">
           <img
             src={logo?.url}
