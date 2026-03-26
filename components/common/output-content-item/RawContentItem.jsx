@@ -1,11 +1,7 @@
 import {useState} from "react"
 import {default as cn} from "classnames"
 
-interface Props {
-	contentItem: any
-}
-
-export default function RawContentItem({contentItem}: Props) {
+export default function RawContentItem({contentItem}) {
 	const [jsonExpanded, setJsonExpanded] = useState(false)
 
 	return (

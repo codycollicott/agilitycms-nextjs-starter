@@ -1,13 +1,8 @@
 "use client"
-import {ContentItem} from "@agility/content-fetch"
 import OutputField from "./OutputField"
 import RawContentItem from "./RawContentItem"
 
-interface Props {
-	contentItem: ContentItem
-}
-
-export default function OutputNestedContentItem({contentItem}: Props) {
+export default function OutputNestedContentItem({contentItem}) {
 	return (
 		<div className="mt-2">
 			<div className="p-4 rounded-sm border border-gray-200 bg-gray-50 mx-auto">

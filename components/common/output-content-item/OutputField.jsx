@@ -3,12 +3,8 @@ import OutputNestedContentItem from "./OutputNestedContentItem"
 import {useEffect, useMemo, useState} from "react"
 import {default as cn} from "classnames"
 
-interface Props {
-	fieldName: string
-	fieldValue: any
-}
 
-export default function OutputField({fieldName, fieldValue}: Props) {
+export default function OutputField({fieldName, fieldValue}) {
 	const [isExpanded, setIsExpanded] = useState(false)
 	const [isJSON, setIsJSON] = useState(false)
 	const [jsonValue, setJsonValue] = useState<string | null>(null)

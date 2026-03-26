@@ -1,18 +1,13 @@
 "use client"
-import { useState, useEffect} from "react"
+import { useState} from "react"
 import Link from "next/link"
-import { IHeaderData } from "lib/cms-content/getHeaderContent"
 import { ArrowUpIcon, ArrowDownIcon } from "@heroicons/react/24/solid"
 import { usePathname } from "next/navigation"
 
-interface Props {
-	header: IHeaderData | null
-}
 
-const SiteHeader = ({ header }: Props) => {
+const SiteHeader = ({ header }) => {
 	const pathname = usePathname()
-	const [open, setOpen] = useState(false)
-	const [subMenu, setSubMenu]:any = useState(null)
+	const [subMenu, setSubMenu] = useState(null)
 
   const [hash, setHash] = useState("");
 
@@ -29,7 +24,7 @@ const SiteHeader = ({ header }: Props) => {
 			<div className="max-w-(--breakpoint-xl) mx-auto">
 				<div className="flex-col">
 					<nav className="flex-col">
-						{header.links.map((navitem:any, index) => {
+						{header.links.map((navitem, index) => {
               const isParentActive = pathname === navitem.path || pathname.startsWith(navitem.path + "/");
               
 							if (navitem?.children) {
@@ -43,7 +38,7 @@ const SiteHeader = ({ header }: Props) => {
 										</div>
 										{subMenu == index && (
 											<div className="ml-4 mt-2 flex flex-col"> 
-												{navitem?.children?.map((item: any, index: number) => {
+												{navitem?.children?.map((item, index) => {
                           const url = item?.redirect?.url || '';
                           const [itemPathPart, itemHashPart] = url.split('#');
 

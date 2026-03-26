@@ -21,7 +21,7 @@ const allModules = [
  * @param moduleName
  * @returns
  */
-export const getModule = (moduleName: string): any | null => {
+export const getModule = (moduleName) => {
 	if (!moduleName) return null;
 	const obj = allModules.find(
 		(m) => m.name.toLowerCase() === moduleName.toLowerCase()
