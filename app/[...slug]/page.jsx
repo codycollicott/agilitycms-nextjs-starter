@@ -3,12 +3,9 @@ import { getAgilityPage } from "lib/cms/getAgilityPage"
 import { getAgilityContext } from "lib/cms/getAgilityContext"
 import agilitySDK from "@agility/content-fetch"
 
-import { Metadata, ResolvingMetadata } from "next"
 
 import { resolveAgilityMetaData } from "lib/cms-content/resolveAgilityMetaData"
-import NotFound from "./not-found"
 import InlineError from "components/common/InlineError"
-import { SitemapNode } from "lib/types/SitemapNode"
 import { notFound } from "next/navigation"
 
 export const revalidate = 60
@@ -37,7 +34,7 @@ export async function generateStaticParams() {
 		},
 	};
 	// Get the flat sitemap and generate the paths
-	const sitemap: { [path: string]: SitemapNode } = await agilityClient.getSitemapFlat({
+	const sitemap = await agilityClient.getSitemapFlat({
 		channelName: process.env.AGILITY_SITEMAP || "website",
 		languageCode,
 	});
@@ -59,9 +56,9 @@ export async function generateStaticParams() {
  * Generate metadata for this page
  */
 export async function generateMetadata(
-	props: any,
-	parent: ResolvingMetadata
-): Promise<Metadata> {
+	props,
+	parent
+) {
 	const { params } = props;  // Remove the 'await' here
 
 	const { locale, sitemap, isDevelopmentMode, isPreview } = await getAgilityContext();
@@ -76,7 +73,7 @@ export async function generateMetadata(
 		parent,
 	});
 }
-export default async function Page({ params }: any) {
+export default async function Page({ params }) {
 
 	const agilityData = await getAgilityPage({ params });
 	if (!agilityData.page) notFound();
