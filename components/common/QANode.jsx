@@ -33,7 +33,6 @@ const QANode = ({ node }) => {
     .split(/<\/p>/)
     .map(item => item.replace(/<p>/, "").trim())
     .filter(Boolean);
-console.log(node?.fields)
 
   return (
     <div>

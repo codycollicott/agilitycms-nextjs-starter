@@ -19,7 +19,7 @@ const TextNode = ({ node, grid, index }) => {
     return <img src={node?.fields?.backupImage?.url} />
   }
 	return (
-		<div className={`${grid?.hasBorder == "true" && 'border-l-1 border-black pl-2'}`}>
+		<div className={`${grid?.hasBorder == "true" && 'border-l-1 border-black pl-4'}`}>
 			{node?.fields?.imagePosition == 'aboveTitle' && (
         <div className="mb-4"><GetImage /></div>
 			)}

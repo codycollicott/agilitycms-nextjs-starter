@@ -288,7 +288,7 @@ function SearchResults({
         // console.log('result', result)
         return (
         <SearchResult
-          onClick={() => {console.log('clicked'); setOpen(false)}}
+          onClick={() => {setOpen(false)}}
           key={result.url || resultIndex}
           result={result}
           resultIndex={resultIndex}
@@ -309,7 +309,7 @@ const SearchInput = forwardRef(function SearchInput({ autocomplete, autocomplete
       <input
         ref={inputRef}
         data-autofocus
-        onFocus={() => {console.log('in focus')}}
+        
         className={clsx(
           'border border-gray-600 rounded-md px-4 py-2 bg-gray-200 w-[350px]',
           autocompleteState.status === 'stalled' ? 'pr-11' : 'pr-4',

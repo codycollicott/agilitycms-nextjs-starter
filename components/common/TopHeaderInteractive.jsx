@@ -9,7 +9,7 @@ import MobileMenu from './MobileMenu'
 
 
 const TopHeaderInteractive = ({ links, logo }) => {
-  console.log(links)
+  
   const [headerState, setHeaderState] = useState(false)
   const [searchState, setSearchState] = useState(false)
 	

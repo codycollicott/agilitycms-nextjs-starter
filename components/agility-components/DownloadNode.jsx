@@ -18,6 +18,9 @@ const DownloadNode = async ({ module, languageCode }) => {
 				style={fields?.titleStyle}
 				spacingBottom={fields?.titleSpacingBottom}
 			/>
+      {fields?.titleBorderBottom == 'true' && (
+        <div className={`mb-${fields?.titleSpacingBottom} h-[2px] bg-black w-full`}> </div>
+      )}
 			{fields?.subTitle && (
 				<h4 className={`mb-${fields?.subTitleSpacingBottom} text-gray-600`}> {fields?.subTitle}</h4>
 			)}

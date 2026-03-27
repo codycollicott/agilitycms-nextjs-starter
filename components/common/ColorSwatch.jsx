@@ -10,7 +10,6 @@ const ColorSwatch = ({ node, height='auto' }) => {
 		)
 	}
   const colorNodeHeight = () => {
-    console.log(height)
     if (node?.fields?.colorHeight == 'square') {
       return 'h-32'
     }
