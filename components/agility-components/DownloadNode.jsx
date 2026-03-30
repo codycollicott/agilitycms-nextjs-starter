@@ -33,9 +33,10 @@ const DownloadNode = async ({ module, languageCode }) => {
       {(fields?.hasBorder == 'true' && fields?.downloadLabel) && (
         <div className="flex">
           <Link target="_blank" href={fields?.downloadURL || ''}>
-            <div className="border border-black px-6 py-2 rounded-md flex mr-6 ">
-              <p className="text-sm mr-4">{fields?.downloadLabel}</p>
-              <img src={`/button_${fields?.icon}.svg`} className="w-4" />
+            <div className="border group hover:bg-black border-black px-6 py-2 rounded-md flex mr-6 ">
+              <p className="text-sm group-hover:text-white mr-4">{fields?.downloadLabel}</p>
+              <img src={`/button_${fields?.icon}.svg`} className="w-4 block group-hover:hidden" />
+              <img src={`/button_${fields?.icon}_filled.svg`} className="w-4 hidden group-hover:block" />
             </div>
           </Link>
         </div>

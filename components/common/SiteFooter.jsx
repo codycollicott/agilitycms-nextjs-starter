@@ -41,10 +41,14 @@ const SiteFooter = ({ footer, header }) => {
       </div>
       <div className="flex flex-col md:flex-row justify-start flex-wrap gap-4 xl:justify-end mt-8 md:mt-12">
         <Link href={footer?.data?.link1?.href}>
-          <div className="border flex rounded-sm px-6 py-2 items-center">  {footer?.data?.link1?.text} </div>
+          <div className="border flex rounded-sm px-6 py-2 items-center hover:bg-black hover:text-white">  {footer?.data?.link1?.text} </div>
         </Link>
         <a href={`mailto:${footer?.data?.link2?.href.replace('/', '')}`}>
-          <div className="border flex rounded-sm px-6 py-2 items-center"> <img className="w-4 mr-2" src='/env.svg' /> {footer?.data?.link2?.text} </div>
+          <div className="border flex rounded-sm px-6 py-2 items-center group hover:bg-black hover:text-white"> 
+            <img className="group-hover:hidden block w-4 mr-2" src='/env.svg' />
+            <img className="group-hover:block hidden w-4 mr-2" src='/env_white.svg' /> 
+            {footer?.data?.link2?.text} 
+          </div>
         </a>
         
         <button className="group p-[2px] rounded-lg bg-gradient-to-r from-[#BFC02A] via-[#2496CB] via-[#E29470] via-[#D8749A] to-[#AD4DDA]">
