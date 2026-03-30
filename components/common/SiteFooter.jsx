@@ -24,16 +24,16 @@ const SiteFooter = ({ footer, header }) => {
             </Link>
           ))}
         </div>
-        <div className="flex md:block flex-wrap gap-2">
+        <div className="flex  md:block flex-wrap gap-2">
           <Link href={footer?.data?.downloadbutton1URL || ''}>
-            <div className="flex mb-2 items-center">
-              <p className="mr-2">{footer?.data?.downloadButtonLabel1}</p>
-              <ArrowDownTrayIcon className="w-4" />
+            <div className="flex mb-2 group items-center ">
+              <p className="mr-2 group-hover:font-bold">{footer?.data?.downloadButtonLabel1}</p>
+              <ArrowDownTrayIcon className="w-4 group-hover:font-bold" />
             </div>
           </Link>
           <Link href={footer?.data?.downloadbutton2URL || ''}>
-            <div className="flex mb-2 items-center">
-              <p className="mr-2">{footer?.data?.downloadButtonLabel2}</p>
+            <div className="flex mb-2 group items-center">
+              <p className="mr-2 group-hover:font-bold">{footer?.data?.downloadButtonLabel2}</p>
               <ArrowDownTrayIcon className="w-4" />
             </div>
           </Link>
@@ -47,8 +47,8 @@ const SiteFooter = ({ footer, header }) => {
           <div className="border flex rounded-sm px-6 py-2 items-center"> <img className="w-4 mr-2" src='/env.svg' /> {footer?.data?.link2?.text} </div>
         </a>
         
-        <button className="p-[2px] rounded-lg bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500">
-          <span className="block bg-white text-black px-4 py-2 rounded-md">
+        <button className="group p-[2px] rounded-lg bg-gradient-to-r from-[#BFC02A] via-[#2496CB] via-[#E29470] via-[#D8749A] to-[#AD4DDA]">
+          <span className="block group-hover:bg-transparent bg-white text-black px-4 py-2 rounded-md">
             <Link href={footer?.data?.link3?.href}>
               <div className="flex">
                 <img className="w-4 mr-2" src='/ai_icon.svg' /> {footer?.data?.link3?.text}
@@ -58,15 +58,15 @@ const SiteFooter = ({ footer, header }) => {
         </button>
       </div>
       <div className="bg-black h-[1px] w-full my-4"></div>
-      <div className="flex flex-wrap justify-start md:flex-row gap-2  mt-4">
+      <div className="flex flex-wrap xl:flex-nowrap justify-start xl:justify-around md:flex-row gap-2  mt-4">
         {footer?.links?.[2]?.map(link => (
           <Link href={link?.fields?.linkUrl || ''}>
-            <p className="text-gray-600 text-sm mb-2">{link?.fields?.linkName}</p>
+            <p className="text-[#666] text-xs mb-2">{link?.fields?.linkName}</p>
           </Link>
         ))}
       </div>
       <div className="flex flex-col xl:flex-row items-start xl:justify-between xl:items-center">
-        <p className="text-gray-600 mt-4 text-sm"> {footer?.data?.copyrightText} </p>
+        <p className="text-[#666] mt-4 text-sm"> {footer?.data?.copyrightText} </p>
         <div className="flex items-center">
           {footer?.data?.linkedinURL && (
             <Link target="_blank" href={footer?.data?.linkedinURL || ''}> <img className="w-4 mr-4" src='/link.svg' /></Link>

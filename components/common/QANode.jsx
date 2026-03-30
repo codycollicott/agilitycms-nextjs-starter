@@ -55,8 +55,8 @@ const QANode = ({ node }) => {
         return (
         <div className="flex mb-4 items-start "> 
           <img className="w-[20px] mr-4" src={`/${inputWIcon?.icon}.svg`} />
-          <p className="w-5/6 text-gray-600"> 
-            <div className={`text-gray-600`} dangerouslySetInnerHTML={renderHTML(inputWIcon?.text)} ></div>
+          <p className="w-5/6 text-[#666]"> 
+            <div className={`text-[#666]`} dangerouslySetInnerHTML={renderHTML(inputWIcon?.text)} ></div>
           </p>
         </div>
       )})}

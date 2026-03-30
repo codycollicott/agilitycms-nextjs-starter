@@ -16,7 +16,7 @@ export default function OutputNestedContentItem({contentItem}) {
 					<span>({contentItem.properties.referenceName})</span>
 				</h2>
 
-				<h3 className="text-lg font-medium text-gray-600">Fields</h3>
+				<h3 className="text-lg font-medium text-[#666]">Fields</h3>
 				<div className="flex flex-col gap-4 ml-3">
 					{Object.keys(contentItem.fields).map((fieldName) => (
 						<OutputField key={fieldName} fieldName={fieldName} fieldValue={contentItem.fields[fieldName]} />

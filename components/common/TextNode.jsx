@@ -12,11 +12,24 @@ const TextNode = ({ node, grid, index }) => {
 	}
   const GetImage = () => {
     if (!node?.fields?.image && !node?.fields?.backupImage) return
+    if (node?.fields?.title == 'Purpose') {
+      console.log(node?.fields?.backupImage?.url)
+    }
     if (node?.fields?.image) {
+
       const rawImage = JSON.parse(node?.fields?.image);
+      if (node?.fields?.imageFixedHeight) {
+        return <div style={{backgroundImage:rawImage?.url, height: `${node?.fields?.imageFixedHeight}px`}} />
+      }
       return  <img src={rawImage?.url} />
     }
+    if (node?.fields?.imageFixedHeight) {
+      return <div style={{backgroundImage:`url(${node?.fields?.backupImage?.url})`, height: `${node?.fields?.imageFixedHeight}px`}} className="bg-cover bg-center" />
+    }
     return <img src={node?.fields?.backupImage?.url} />
+  }
+  if (node?.fields?.title == 'Example 2 with Legend Style') {
+    console.log(node?.fields)
   }
 	return (
 		<div className={`${grid?.hasBorder == "true" && 'border-l-1 border-black pl-4'}`}>
@@ -40,6 +53,9 @@ const TextNode = ({ node, grid, index }) => {
           style={node?.fields?.titleStyle}
           spacingBottom={node?.fields?.titleSpacingBottom}
         />
+      )}
+      {node?.fields?.titleBorderBottom == 'true' && (
+        <div className={`mb-${node?.fields?.titleSpacingBottom} h-[2px] bg-black w-full`}> </div>
       )}
       {node?.fields?.imagePosition != 'aboveTitle' && (
         <GetImage />

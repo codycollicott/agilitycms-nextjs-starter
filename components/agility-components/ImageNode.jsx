@@ -44,7 +44,7 @@ const ImageNode = async ({ module, languageCode }) => {
       />
 			<GetImage />
       {fields?.imageDisclaimer && (
-        <p className="mt-2"> {fields?.imageDisclaimer} </p>
+        <p className="mt-4 text-sm"> <i>{fields?.imageDisclaimer}</i> </p>
       )}
       
 		</div>

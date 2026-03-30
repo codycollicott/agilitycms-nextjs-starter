@@ -11,7 +11,9 @@ const Grid = async ({ module, languageCode }) => {
     contentID: module.contentid,
     languageCode,
   })
-  
+  if (fields?.title == 'Primary Shades and Tints') {
+    console.log(fields?.titleSpacingBottom)
+  }
   return (
 		<div id={fields?.navigationID || ''} className="pl-8 xl:pl-20 pr-8 md:pr-4 relative mt-12 md:mt-20" data-agility-component={contentID}>
 			
@@ -29,14 +31,14 @@ const Grid = async ({ module, languageCode }) => {
       )}
       {fields?.subTitle && (
         <div
-          className={`w-full md:w-[66%] text-gray-600 mb-${fields?.subTitleSpacingBottom}`}
+          className={`w-full md:w-[66%] text-[#666] mb-${fields?.subTitleSpacingBottom}`}
           dangerouslySetInnerHTML={renderHTML(fields?.subTitle)}
         ></div>
       )}
       {fields?.masonlayout == 'true' ? (
         <MasonryGrid items={fields?.nodes} />
       ) : (
-        <div className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-${fields?.gridcolumns} gap-8`}>
+        <div className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-${fields?.gridcolumns} gap-${fields?.nodeGap || '8'}`}>
           {fields?.nodes?.map((node, index) => {
             if (node?.fields?.nodeType == "textImage") return <TextNode index={index} grid={fields} node={node} /> 
             if (node?.fields?.nodeType == "color") return <ColorSwatch  node={node} /> 

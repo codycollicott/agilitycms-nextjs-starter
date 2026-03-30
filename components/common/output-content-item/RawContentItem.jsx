@@ -6,7 +6,7 @@ export default function RawContentItem({contentItem}) {
 
 	return (
 		<>
-			<h3 className="text-lg font-medium text-gray-600 pt-6">
+			<h3 className="text-lg font-medium text-[#666] pt-6">
 				<button
 					onClick={() => setJsonExpanded(!jsonExpanded)}
 					className="hover:text-purple-600 transition-all flex gap-1 items-center"

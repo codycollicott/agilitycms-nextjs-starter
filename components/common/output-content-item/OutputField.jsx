@@ -49,7 +49,7 @@ export default function OutputField({fieldName, fieldValue}) {
 
 	return (
 		<div key={fieldName}>
-			<h3 className="text-lg font-semibold text-gray-600">
+			<h3 className="text-lg font-semibold text-[#666]">
 				{isExpandable ? (
 					<button
 						onClick={() => setIsExpanded(!isExpanded)}

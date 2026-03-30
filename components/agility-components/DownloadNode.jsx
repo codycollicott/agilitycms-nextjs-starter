@@ -22,18 +22,18 @@ const DownloadNode = async ({ module, languageCode }) => {
         <div className={`mb-${fields?.titleSpacingBottom} h-[2px] bg-black w-full`}> </div>
       )}
 			{fields?.subTitle && (
-				<h4 className={`mb-${fields?.subTitleSpacingBottom} text-gray-600`}> {fields?.subTitle}</h4>
+				<h4 className={`mb-${fields?.subTitleSpacingBottom} text-[#666]`}> {fields?.subTitle}</h4>
 			)}
       <div
         data-agility-field="textblob"
         data-agility-html
-        className="text-gray-600 download-node-content"
+        className="text-[#666] download-node-content"
         dangerouslySetInnerHTML={renderHTML(fields?.content)}
       ></div>
       {(fields?.hasBorder == 'true' && fields?.downloadLabel) && (
         <div className="flex">
           <Link target="_blank" href={fields?.downloadURL || ''}>
-            <div className="border border-black px-6 py-2 rounded-md flex mr-6">
+            <div className="border border-black px-6 py-2 rounded-md flex mr-6 ">
               <p className="text-sm mr-4">{fields?.downloadLabel}</p>
               <img src={`/button_${fields?.icon}.svg`} className="w-4" />
             </div>
@@ -42,7 +42,7 @@ const DownloadNode = async ({ module, languageCode }) => {
       )}
       {(fields?.downloadLabel && (!fields?.hasBorder || fields?.hasBorder == 'false')) && (
         <Link target="_blank" href={fields?.downloadURL || ''}>
-          <div className="flex items-center">
+          <div className="flex items-center group">
             <StyledText 
               weight={fields?.labelFontWeight}
               color='black' 
@@ -50,7 +50,8 @@ const DownloadNode = async ({ module, languageCode }) => {
               style={fields?.labelStyle}
             />
             <div className="w-8 ml-4">
-              <img className='w-full' src={`/button_${fields?.icon}.svg`} />
+              <img className='w-full block group-hover:hidden' src={`/button_${fields?.icon}.svg`} />
+              <img className='w-full hidden group-hover:block' src={`/button_${fields?.icon}_filled.svg`} />
             </div>
           </div>
         </Link>

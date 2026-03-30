@@ -35,7 +35,7 @@ export const StyledText = ({style, weight, color, content, spacingBottom}) => {
 		case 'p':
 			return (<p className={`${fontweight} text-${textColor} mb-2`}> {content} </p>)
 		case 'p-sm':
-			return (<p className={`${fontweight} text-${textColor} text-sm`}> {content} </p>)
+			return (<p className={`${fontweight} text-${textColor} mb-${spacingBottom} text-sm`}> {content} </p>)
 		default:
 			return (<h4 className={`${fontweight} default text-${textColor} mb-${spacingBottom}`}> {content} </h4>)
 	}

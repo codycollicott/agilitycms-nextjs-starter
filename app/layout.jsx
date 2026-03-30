@@ -50,13 +50,18 @@ export default async function RootLayout({
         text-sm 
         hidden 
         xl:grid-cols-3 
+        xl:grid-cols-5
         xl:grid-cols-4
         xl:grid-cols-2
         xl:grid-cols-1
         xl:w-[33%]
         xl:w-[66%]
         xl:w-[50%] 
-        xl:w-[75%]"></div>
+        xl:w-[75%]
+        gap-4
+        gap-8
+        gap-12
+        text-[#666]"></div>
       <body data-agility-guid={process.env.AGILITY_GUID} className="bg-white">
         <div id="site-wrapper">
           <div id="site" className="w-full 2xl:w-[1440px] xl:w-[1280px] mx-auto px-0 xl:px-8">

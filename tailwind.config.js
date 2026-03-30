@@ -44,7 +44,7 @@ module.exports = {
 				},
 			],
 			'5xl': [
-				'1.2rem',
+				'1.25rem',
 				{
 					lineHeight: '133%',
 					letterSpacing: '0%',

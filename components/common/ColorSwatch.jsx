@@ -20,7 +20,7 @@ const ColorSwatch = ({ node, height='auto' }) => {
   }
   const colorNodeStyle = (type) => {
     if (type == 'true') {
-      return { borderLeft: `12px solid #${node?.fields?.hexcode}` }
+      return { borderLeft: `24px solid #${node?.fields?.hexcode}` }
     }
     return { backgroundColor: `#${node?.fields?.hexcode}` }
   }
@@ -28,7 +28,7 @@ const ColorSwatch = ({ node, height='auto' }) => {
   const getTextColor = (colorByNode) => {
     if (colorByNode == 'black') return 'text-black'
     if (colorByNode == 'white') return 'text-white'
-    return 'text-gray-600'
+    return 'text-[#666]'
   }
 
 	return (
@@ -48,26 +48,26 @@ const ColorSwatch = ({ node, height='auto' }) => {
         )}
         {node?.fields?.showsecondarycolorcodes !== 'false' && (
           <div className="flex">
-            <p className={`${getTextColor(node?.fields?.secondaryColorCodeColor)} w-1/4`}> RGB </p>
-            <p className={`${getTextColor(node?.fields?.secondaryColorCodeColor)}`}> {node?.fields?.rGBcode} </p>
+            <p className={`${getTextColor(node?.fields?.secondaryColorCodeColor)} w-1/3 text-sm`}> RGB </p>
+            <p className={`${getTextColor(node?.fields?.secondaryColorCodeColor)} text-sm`}> {node?.fields?.rGBcode} </p>
           </div>
         )}
         {node?.fields?.hideHex !== 'true' && (
           <div className="flex">
-            <p className={`${getTextColor(node?.fields?.secondaryColorCodeColor)} w-1/4`}> HEX </p>
-            <p className={`${getTextColor(node?.fields?.secondaryColorCodeColor)}`}> {node?.fields?.hexcode}</p>
+            <p className={`${getTextColor(node?.fields?.secondaryColorCodeColor)} w-1/3 text-sm`}> HEX </p>
+            <p className={`${getTextColor(node?.fields?.secondaryColorCodeColor)} text-sm`}> {node?.fields?.hexcode}</p>
           </div>
         )}
         {node?.fields?.showsecondarycolorcodes !== 'false' && (
           <div> 
             <div className="flex">
-              <p className={`${getTextColor(node?.fields?.secondaryColorCodeColor)} w-1/4`}> CMYK </p>
-              <p className={`${getTextColor(node?.fields?.secondaryColorCodeColor)} `}> {node?.fields?.cMYKcode} </p>
+              <p className={`${getTextColor(node?.fields?.secondaryColorCodeColor)} w-1/3 text-sm`}> CMYK </p>
+              <p className={`${getTextColor(node?.fields?.secondaryColorCodeColor)} text-sm`}> {node?.fields?.cMYKcode} </p>
             </div>
             {node?.fields?.pMSCode && (
               <div className="flex">
-                <p className={`${getTextColor(node?.fields?.secondaryColorCodeColor)} w-1/4`}> PMS </p>
-                <p className={`${getTextColor(node?.fields?.secondaryColorCodeColor)}`}> {node?.fields?.pMSCode} </p>
+                <p className={`${getTextColor(node?.fields?.secondaryColorCodeColor)} w-1/3 text-sm`}> PMS </p>
+                <p className={`${getTextColor(node?.fields?.secondaryColorCodeColor)} text-sm`}> {node?.fields?.pMSCode} </p>
               </div>
             )}
           </div>

@@ -33,7 +33,7 @@ const SiteHeader = ({ header }) => {
 										<div className="">
                       <div onClick={() => {subMenu == index ? setSubMenu(null) : setSubMenu(index)}} className={`${isParentActive && 'bg-[#333]'} cursor-pointer py-2 flex justify-between items-center`}>
                         <p className={`text-base leading-6 font-medium text-white`}> {navitem.title} </p>
-                        {subMenu == index ? <ArrowUpIcon className="w-4 text-white" /> : <ArrowDownIcon className="w-4 text-white" />}
+                        {subMenu == index ? <img src='/arrow-down.svg' className="w-4 text-white" /> : <img src='/arrow-up.svg' className="w-4 text-white" />}
 											 </div>
 										</div>
 										{subMenu == index && (
