@@ -41,7 +41,7 @@ const DownloadNode = async ({ module, languageCode }) => {
         </div>
       )}
       {(fields?.downloadLabel && (!fields?.hasBorder || fields?.hasBorder == 'false')) && (
-        <Link href={fields?.downloadURL || ''}>
+        <Link target="_blank" href={fields?.downloadURL || ''}>
           <div className="flex items-center">
             <StyledText 
               weight={fields?.labelFontWeight}

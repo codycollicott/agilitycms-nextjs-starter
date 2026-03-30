@@ -55,7 +55,7 @@ const PreviewBar = ({ isPreview, isDevelopmentMode, startPreviewMode }) => {
 						onClick={() => setOpen(true)}
 						title={isPreview ? 'Preview Mode' : 'Live Mode'}
 					>
-						<img src="https://static.agilitycms.com/brand/agility-triangle-yellow.svg" alt="Agility Website | Preview Mode" width={20} height={20} className="w-5 h-5" />
+						<img src="/assets/favicon.ico" alt="Agility Website | Preview Mode" width={20} height={20} className="w-5 h-5" />
 
 					</button>
 					{isPreview && (
@@ -71,7 +71,7 @@ const PreviewBar = ({ isPreview, isDevelopmentMode, startPreviewMode }) => {
 					<div className="w-[420px] max-w-[95vw] bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 p-6 flex flex-col gap-4 animate-fade-in relative">
 						<button onClick={() => setOpen(false)} className="absolute top-3 right-3 rounded-full p-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition"></button>
 						<div className="flex items-center gap-3 mb-2">
-							<img src="https://static.agilitycms.com/layout/img/logo-original.svg" alt="Agility CMS" className="h-7" />
+							<img src="/assets/favicon.ico" alt="Agility CMS" className="h-7" />
 							<span className={`text-sm px-3 py-1 rounded font-bold ${isPreview ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200' : 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'}`}>{isPreview ? 'Preview' : 'Live'}</span>
 						</div>
 						<div className="flex flex-col gap-3">

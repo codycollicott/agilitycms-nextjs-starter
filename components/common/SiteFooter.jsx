@@ -43,7 +43,7 @@ const SiteFooter = ({ footer, header }) => {
         <Link href={footer?.data?.link1?.href}>
           <div className="border flex rounded-sm px-6 py-2 items-center">  {footer?.data?.link1?.text} </div>
         </Link>
-        <a href={`mailto:${footer?.data?.link2?.href}`}>
+        <a href={`mailto:${footer?.data?.link2?.href.replace('/', '')}`}>
           <div className="border flex rounded-sm px-6 py-2 items-center"> <img className="w-4 mr-2" src='/env.svg' /> {footer?.data?.link2?.text} </div>
         </a>
         
