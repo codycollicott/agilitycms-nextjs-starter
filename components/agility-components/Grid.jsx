@@ -29,7 +29,7 @@ const Grid = async ({ module, languageCode }) => {
       )}
       {fields?.subTitle && (
         <div
-          className={`text-gray-600 mb-${fields?.subTitleSpacingBottom}`}
+          className={`w-full md:w-[66%] text-gray-600 mb-${fields?.subTitleSpacingBottom}`}
           dangerouslySetInnerHTML={renderHTML(fields?.subTitle)}
         ></div>
       )}
