@@ -3,7 +3,6 @@ import PreviewBar from "components/common/PreviewBar"
 import SiteFooter from "components/common/SiteFooter"
 import SiteHeader from "components/common/SiteHeader"
 import { getAgilityContext } from "lib/cms/getAgilityContext"
-
 import TopHeader from "components/common/TopHeader"
 import "../styles/globals.css"
 import { getHeaderContent } from "lib/cms-content/getHeaderContent"
@@ -58,13 +57,14 @@ export default async function RootLayout({
         xl:w-[66%]
         xl:w-[50%] 
         xl:w-[75%]
+        xl:w-[85%]
         gap-4
         gap-8
         gap-12
         text-[#666]"></div>
       <body data-agility-guid={process.env.AGILITY_GUID} className="bg-white">
         <div id="site-wrapper">
-          <div id="site" className="w-full 2xl:w-[1440px] xl:w-[1280px] mx-auto px-0 xl:px-8">
+          <div id="site" className="w-full">
             <PreviewBar
               {...{ isDevelopmentMode, isPreview, startPreviewMode }}
             />
@@ -72,7 +72,7 @@ export default async function RootLayout({
             <div className="flex flex-col min-h-screen">
               <div className="flex">
                 <SiteHeader {...{ header }} />
-                <main className='w-full md:w-3/4'>
+                <main className='w-full md:w-4/5'>
                   <div className="">
                     {children}
                   </div>

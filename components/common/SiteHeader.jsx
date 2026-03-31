@@ -1,5 +1,5 @@
 "use client"
-import { useState} from "react"
+import { useState, useEffect} from "react"
 import Link from "next/link"
 import { ArrowUpIcon, ArrowDownIcon } from "@heroicons/react/24/solid"
 import { usePathname } from "next/navigation"
@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation"
 const SiteHeader = ({ header }) => {
 	const pathname = usePathname()
 	const [subMenu, setSubMenu] = useState(null)
-
+  const [isScrolledLive, setIsScrolledLive] = useState(false)
   const [hash, setHash] = useState("");
 
   if (!header) {
@@ -19,8 +19,23 @@ const SiteHeader = ({ header }) => {
 		)
 	}
   
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      const threshold = 50;
+      if (window.scrollY > threshold && !isScrolledLive) {
+        setIsScrolledLive(true);
+      } else if (window.scrollY <= 10 && isScrolledLive) {
+        setIsScrolledLive(false);
+      }
+    }
+    
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [isScrolledLive])
+
 	return (
-		<header className="hidden md:block w-1/4 bg-primary p-4 xl:p-8 sticky top-0 h-screen overflow-y-scroll">
+		<header className={`hidden md:block w-1/5 bg-primary py-4 sticky top-0 h-screen ${isScrolledLive ? 'top-[64px]' : ''} overflow-y-scroll`}>
 			<div className="max-w-(--breakpoint-xl) mx-auto">
 				<div className="flex-col">
 					<nav className="flex-col">
@@ -31,7 +46,7 @@ const SiteHeader = ({ header }) => {
 								return (
 									<div className="">
 										<div className="">
-                      <div onClick={() => {subMenu == index ? setSubMenu(null) : setSubMenu(index)}} className={`${isParentActive && 'bg-[#333]'} cursor-pointer py-2 flex justify-between items-center`}>
+                      <div onClick={() => {subMenu == index ? setSubMenu(null) : setSubMenu(index)}} className={`${isParentActive && 'bg-[#333]'} cursor-pointer px-4 py-2 flex justify-between items-center`}>
                         <p className={`text-base leading-6 font-medium text-white`}> {navitem.title} </p>
                         {subMenu == index ? <img src='/arrow-down.svg' className="w-4 text-white" /> : <img src='/arrow-up.svg' className="w-4 text-white" />}
 											 </div>
@@ -68,8 +83,11 @@ const SiteHeader = ({ header }) => {
                                 (isChildActive || isDefaultChild)
                                   ? 'bg-[#333] text-[#FFF]'
                                   : 'text-[#CCC]'
-                              } p-2 text-base`}
+                              } p-2 text-base relative`}
                             >
+                              {(isChildActive || isDefaultChild) && (
+                                <div className="absolute h-full bg-[#333] top-0 -left-[100%] w-full"></div>
+                              )}
                               {item.title || item?.menuText}
                             </Link>
                           );

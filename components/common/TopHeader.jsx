@@ -1,10 +1,10 @@
 
 import TopHeaderInteractive from './TopHeaderInteractive'
 
-const TopHeader = ({ header }) => {
+const TopHeader = ({ header, isScrolledLive }) => {
   
 	return (
-    <TopHeaderInteractive logo={header?.logo} links={header?.links} />
+    <TopHeaderInteractive isScrolledLive={isScrolledLive} logo={header?.logo} links={header?.links} />
 	)
 }
 

@@ -7,7 +7,7 @@ const ContentHeading = async ({ module, languageCode }) => {
     languageCode,
   })
 	if (fields?.image) return (
-    <div className=""> <img className="w-full" src={fields?.image?.url} /> </div>
+    <div className="h-[312px] bg-cover bg-center w-full" style={{backgroundImage:`url('${fields?.image?.url}')`} }> </div>
   )
   return (
     <div style={{backgroundImage:'url(/banner.jpg)'}} className="bg-cover bg-right px-8 py-12 md:py-16 mb-8">
